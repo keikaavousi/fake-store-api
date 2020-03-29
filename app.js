@@ -12,7 +12,7 @@ const port = 9000
 const ProductRoute = require('./routes/product')
 
 //middleware
-app.use(cors())
+//app.use(cors())
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
