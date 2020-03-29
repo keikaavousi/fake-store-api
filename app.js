@@ -29,7 +29,9 @@ app.use('/',(req,res)=>{
 mongoose.set('useFindAndModify',false)
 mongoose.connect('mongodb+srv://keikaavousi:qaqjob-rovjy3-pucSaq@cluster0-ffwd2.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser:true})
 .then(result=>{
-    app.listen(process.env.PORT || port)
+    app.listen(process.env.PORT || port,()=>{
+        console.log('connected!')
+    })
 })
 .catch(err=>{
     console.log(err)
