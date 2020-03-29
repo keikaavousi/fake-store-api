@@ -24,6 +24,14 @@ module.exports.addProduct = (req, res) => {
       message: "data is undefined"
     });
   } else {
+    // const product = new Product({
+    //   id: 21,
+    //   title: req.body.title,
+    //   price: req.body.price,
+    //   description: req.body.description,
+    //   image: req.body.image,
+    //   category: req.body.category
+    // })
     res.json({
       id: 21,
       title: req.body.title,
@@ -32,6 +40,13 @@ module.exports.addProduct = (req, res) => {
       image: req.body.image,
       category: req.body.category
     });
+    // product.save()
+    // .then(res=>{
+    //   console.log(res)
+    // })
+    // .catch(err=>{
+    //   console.log(err)
+    // })
   }
 };
 
