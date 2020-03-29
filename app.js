@@ -18,11 +18,11 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
 
-app.use('/',(req,res)=>{
-    res.json({
-        'hi':'hi'
-    })
-})
+// app.use('/',(req,res)=>{
+//     res.json({
+//         'hi':'hi'
+//     })
+// })
 app.use('/products', ProductRoute);
 
 
