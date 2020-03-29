@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let product = {
+            id:1
+        }
+        fetch('http://localhost:9000/products', {
+                method: 'delete',
+                headers: {
+                    'content-type': 'application/json',
+                    'accept': 'application/json'
+                },
+                body:JSON.stringify(product)
+            })
+            .then(res => res.json())
+            .then(rs => console.log(rs))
+    </script>
+</body>
+
+</html>
