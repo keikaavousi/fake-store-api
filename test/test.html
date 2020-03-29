@@ -9,24 +9,27 @@
 
 <body>
     <script>
-        let product = {
-            id:1,
-            title: 'test',
-      price: 13.5,
-      description: 'test desc',
-      image: 'test img',
-      category: 'text cat'
-        }
-        fetch('https://fakestoreapi.herokuapp.com/products', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'accept': 'application/json'
-                },
-                body:JSON.stringify(product)
-            })
-            .then(res => res.json())
-            .then(rs => console.log(rs))
+    //     let product = {
+    //         id:1,
+    //         title: 'test',
+    //   price: 13.5,
+    //   description: 'test desc',
+    //   image: 'test img',
+    //   category: 'text cat'
+    //     }
+    //     fetch('https://fakestoreapi.herokuapp.com/products', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'content-type': 'application/json',
+    //                 'accept': 'application/json'
+    //             },
+    //             body:JSON.stringify(product)
+    //         })
+    //         .then(res => res.json())
+    //         .then(rs => console.log(rs))
+    fetch('https://fakestoreapi.herokuapp.com/products')
+    .then(res=>res.json())
+    .then(rs=>console.log(rs))
     </script>
 </body>
 
