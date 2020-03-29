@@ -20,7 +20,7 @@ app.use('/',(req,res)=>{
 })
 
 //listen
-app.listen(port , ()=>{
+app.listen(process.env.PORT || port , ()=>{
     console.log(`app is listening on post ${port}!`)
 })
 
