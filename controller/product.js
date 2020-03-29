@@ -27,7 +27,9 @@ module.exports.getAllProducts = (req, res) => {
 
 module.exports.getProduct = (req, res) => {
   const id = req.params.id;
-  Product.findById(id)
+  Product.findOne({
+    id:id
+  })
     .then(product => {
       res.json(product);
     })
