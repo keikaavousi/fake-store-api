@@ -13,6 +13,11 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 app.use('/products', ProductRoute);
+app.use('/',(req,res)=>{
+    res.json({
+        'hi':'hi'
+    })
+})
 
 //listen
 app.listen(port , ()=>{
