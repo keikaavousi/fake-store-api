@@ -17,12 +17,13 @@ const ProductRoute = require('./routes/product')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
-app.use('/products', ProductRoute);
+
 app.use('/',(req,res)=>{
     res.json({
         'hi':'hi'
     })
 })
+app.use('/products', ProductRoute);
 
 
 //mongoose
