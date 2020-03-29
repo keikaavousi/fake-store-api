@@ -28,12 +28,12 @@ app.use('/',(req,res)=>{
 //mongoose
 mongoose.set('useFindAndModify',false)
 mongoose.connect('mongodb+srv://keikaavousi:qaqjob-rovjy3-pucSaq@cluster0-ffwd2.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true})
-.then(()=>{
-    app.listen(process.env.PORT || port,()=>{
-        console.log('connected!')
-    })
+.then(result=>{
+    app.listen(process.env.PORT || port)
 })
-
+.catch(err=>{
+    console.log(err)
+})
 
 //listen
 
