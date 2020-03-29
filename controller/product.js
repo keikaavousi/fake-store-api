@@ -1,14 +1,11 @@
 const Product = require("../model/product");
 
 module.exports.getAllProducts = (req, res) => {
-  // Product.find()
-  //   .then(products => {
-  //     res.json(products);
-  //   })
-  //   .catch(err => console.log(err));
-  res.json({
-    status:'yoho!'
-  })
+  Product.find()
+    .then(products => {
+      res.json(products);
+    })
+    .catch(err => console.log(err));
 };
 
 module.exports.getProduct = (req, res) => {
