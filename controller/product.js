@@ -1,28 +1,28 @@
 const Product = require("../model/product");
 
 module.exports.getAllProducts = (req, res) => {
-  // Product.find()
-  //   .then(products => {
-  //     res.json(products);
+  Product.find()
+    .then(products => {
+      res.json(products);
+    })
+    .catch(err => console.log(err));
+
+
+  //  const product = new Product({
+  //     id: 21,
+  //     title: 'rerer',
+  //     price: 12.45,
+  //     description: 'fef',
+  //     image: 'sdgg/dsg/',
+  //     category: 'fdsgg'
   //   })
-  //   .catch(err => console.log(err));
-
-
-   const product = new Product({
-      id: 21,
-      title: 'rerer',
-      price: 12.45,
-      description: 'fef',
-      image: 'sdgg/dsg/',
-      category: 'fdsgg'
-    })
-       product.save()
-    .then(res=>{
-      console.log(res)
-    })
-    .catch(err=>{
-      console.log(err)
-    })
+  //      product.save()
+  //   .then(res=>{
+  //     console.log(res)
+  //   })
+  //   .catch(err=>{
+  //     console.log(err)
+  //   })
 };
 
 module.exports.getProduct = (req, res) => {
