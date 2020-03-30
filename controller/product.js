@@ -13,7 +13,7 @@ module.exports.getAllProducts = (req, res) => {
 
 module.exports.getProduct = (req, res) => {
   const id = req.params.id
-  
+
   Product.findOne({
     id
   })
@@ -45,7 +45,7 @@ module.exports.addProduct = (req, res) => {
     })
   } else {
     res.json({
-      id: 21,
+      id:Product.find().count()+1,
       title: req.body.title,
       price: req.body.price,
       description: req.body.description,

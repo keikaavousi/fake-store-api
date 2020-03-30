@@ -25,7 +25,7 @@ POST:
     category:{
         type:String
     }
-    if it will post correctly, it will return a fake id:21 with your product object sent.
+    if it will post correctly, it will return a fake id based on length of all products (products length+1) together with your product object sent.
     remember that your data won't insert into our database and if you refresh your page (eg. in web applications) it will no longer in fetched datas.              
 
 PUT:
