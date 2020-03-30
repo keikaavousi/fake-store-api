@@ -1,0 +1,15 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+table tr td{
+    border: 1px solid rgba(123,123,123,0.2);
+    padding: 10px;
+}
+table a{
+    margin: 10px;
+}
+table thead td{
+    font-weight: 500;
+    background-color: #f5f5f5;
+}

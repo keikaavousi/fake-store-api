@@ -6,11 +6,14 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const path = require('path')
 
+
 //port
 const port = 9000
 
+
 //routes
 const ProductRoute = require('./routes/product')
+const homeRoute = require('./routes/home')
 
 //middleware
 app.use(cors())
@@ -19,12 +22,19 @@ app.use(express.static(path.join(__dirname,'/public')))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
+//view engine
+app.set('view engine', 'ejs');
+app.set('views', 'views')
+
+
+app.disable('view cache');
 
 // app.use('/',(req,res)=>{
 //     res.json({
 //         'hi':'hi'
 //     })
 // })
+app.use('/',homeRoute)
 app.use('/products', ProductRoute);
 
 

@@ -1,0 +1,19 @@
+nav{
+    background-color: transparent;
+    padding: 10px;
+    ul{
+        display: flex;
+        justify-content: flex-end;
+        li{
+            margin: 30px;
+            a{
+                text-decoration: none;
+                color: rgb(110, 110, 110);
+                font-size: 0.9em;
+                &:hover{
+                    color: initial;
+                }
+            }
+        }
+    }
+}

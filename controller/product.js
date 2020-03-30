@@ -4,7 +4,7 @@ module.exports.getAllProducts = (req, res) => {
   const limit = Number(req.query.limit) || 0
   const sort = req.query.sort=="desc"?-1:1
 
-  Product.find().limit(limit).sort({id:sort})
+  Product.find().select(['-_id']).limit(limit).sort({id:sort})
     .then(products => {
       res.json(products)
     })
@@ -16,9 +16,9 @@ module.exports.getProduct = (req, res) => {
 
   Product.findOne({
     id
-  })
-    .then(products => {
-      res.json(products)
+  }).select(['-_id'])
+    .then(product => {
+      res.json(product)
     })
     .catch(err=> console.log(err))
 }
@@ -63,7 +63,7 @@ module.exports.editProduct = (req, res) => {
     })
   } else {
     res.json({
-      id: req.body.id,
+      id: req.params.id,
       title: req.body.title,
       price: req.body.price,
       description: req.body.description,
@@ -83,12 +83,7 @@ module.exports.deleteProduct = (req, res) => {
       Product.findById(req.params.id)
       .then(product=>{
         res.json({
-            id: req.body.id,
-            title: req.body.title,
-            price: req.body.price,
-            description: req.body.description,
-            image: req.body.image,
-            category: req.body.category
+            product
           })
       })
     }

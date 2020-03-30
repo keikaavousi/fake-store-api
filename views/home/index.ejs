@@ -1,0 +1,69 @@
+<%- include ("../shared/header.ejs") %>
+
+<!-- intro -->
+<section class="row">
+    <div class="col-md-6 intro">
+        <h1>Fake Shop API</h1>
+        <p> Fake shop rest api for your ecommerce or shopping website prototype</p>
+        <a class="btn btn-large btn-primary" href="/">View on GitHub <img src="/icons/github.svg"></a>
+        <a class="btn btn-large btn-secondary" href="/docs">Read Docs <img src="/icons/book.svg"></a>
+    </div>
+    <div class="col-md-6 intro-img">
+        <img src="/icons/intro.svg" />
+    </div>
+</section>
+
+
+<!-- about -->
+<section class="row about">
+    <h3 class="center-align col-md-12">Get tired of Lorem ipsum data?!</h3>
+    <h3 class="center-align col-md-12">Didn't you find any free ecommerce API?!</h3>
+    <p class="center-align">
+        FakeShopApi is a free online REST API that you can use whenever you need Pseudo-real data for
+        your ecommerce or shopping website without runnig any server-side code. 
+        It's awesome for teaching purposes, sample codes, test and etc.
+    </p>
+</section>
+
+
+<!-- tryit -->
+<section id="try" class="row">
+    <h2 class="heading">Example Code</h2>
+    <pre><code>fetch('http://localhost:9000/products/1')
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+    <button id="fetch_btn" class="btn btn-primary">Try it</button>
+    <pre id="result"><code></code></pre>
+</section>
+
+
+<!-- resources-->
+<section class="row">
+    <h2 class="heading">Resources</h2>
+    <p>There are 3 main resources need in shopping prototypes</p>
+    <ul class="list">
+        <li><a href="">/products</a><span>20 products</span></li>
+        <li><a href="">/cart</a>5 cart item</li>
+        <li><a href="">/users</a>10 users</li>
+    </ul>
+ </section>
+
+<!--routes-->
+<section class="row">
+    <h2 class="heading">Routes</h2>
+    <p>All HTTP methods are supported</p>
+    <ul class="list">
+        <li><span>GET</span><a href="/products">/products</a></li>
+        <li><span>GET</span><a href="/products/1">/products/1</a></li>
+        <li><span>GET</span><a href="/products/category/jewelery">/products/category/jewelery</a></li>
+        <li><span>GET</span><a href="/cart?userId=1">/cart?userId=1</a></li>
+        <li><span>GET</span><a href="/products?limit=5">/products?limit=5</a></li>
+        <li><span>POST</span>/products</li>
+        <li><span>PUT</span>/products/1</li>
+        <li><span>PATCH</span>/products/1</li>
+        <li><span>DELETE</span>/products/1</li>
+    </ul>
+ </section>
+
+
+<%- include ("../shared/footer.ejs") %>
