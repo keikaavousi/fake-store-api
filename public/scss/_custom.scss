@@ -1,7 +1,8 @@
 .intro{
     margin-top: 200px;
-    // border-bottom: 1px solid rgba(123,123,123,0.4);
-    // padding-bottom: 30px;
+    @media only screen and (max-width:768px){
+        margin-top: 20px;
+    }
     h1{
         font-size: 2.5em;
     }
@@ -10,6 +11,24 @@
     }
     div{
         align-items: flex-end;
+    }
+    .btns{
+        @media only screen and (max-width:992px){
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        } 
+        a{
+            margin-bottom: 10px;
+            @media only screen and (max-width:480px){
+            width: 50%;
+            justify-content: space-between;
+            font-size: 0.8em;
+            img{
+                width: 20px;
+            }
+        }
+        }
     }
 }
 section{
@@ -20,11 +39,31 @@ section{
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
+    img{
+         @media only screen and (max-width:768px) and (min-width:480px){
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+         }
+    }
+   
 }
 .about{
     margin-top: 200px;
+    @media only screen and (max-width:480px){
+        margin-top: 20px;
+        p{
+             text-align: left;
+        }
+       
+    }
     h3{
+        width: 100%;
         font-size: 1.4em;
+        @media only screen and (max-width:480px){
+            font-size: 1.2em;
+            text-align: left;
+        }
     }
 }
 pre{
@@ -95,6 +134,10 @@ footer{
         justify-content: space-between;
         margin-bottom: 10px;
         text-align: left;
+        @media only screen and (max-width:480px){
+            width: 100%;
+            padding: 10px 0;
+        }
         a{
             font-size: 1.1em;
         }
@@ -103,4 +146,9 @@ footer{
 .heading{
     width: 100%;
     color: $primary;
+}
+@media only screen and (max-width:768px){
+main{
+    padding: 30px;
+}
 }

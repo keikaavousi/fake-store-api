@@ -6,7 +6,7 @@
         <img src='/icons/coffee.svg'/>
         Buy me a coffee</a>
 </footer>
-
+<script src="/js/polyfill.min.js"></script>
 <script>
     let wrapper = document.querySelector('#result code')
     let loading = document.createElement('span')
@@ -19,6 +19,23 @@
             .then(json=>{
                 wrapper.textContent=JSON.stringify(json,undefined,2)
             })
+    })
+
+    let targetAnchor = document.getElementById("try")
+
+    document.querySelector("#try_link").addEventListener('click',function(e){
+
+            e.preventDefault()
+                window.scrollTo({
+                    top: targetAnchor.offsetTop-50,
+                    behavior:'smooth'
+                 });
+           
+    })
+
+    document.getElementById("menu-icon").addEventListener('click',function(e){
+        document.getElementById("menu").classList.toggle("open")
+        e.target.classList.toggle('open')
     })
 
 </script>
