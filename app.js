@@ -12,8 +12,10 @@ const port = 9000
 
 
 //routes
-const ProductRoute = require('./routes/product')
+const productRoute = require('./routes/product')
 const homeRoute = require('./routes/home')
+const cartRoute = require('./routes/cart')
+const userRoute = require('./routes/user')
 
 //middleware
 app.use(cors())
@@ -35,7 +37,9 @@ app.disable('view cache');
 //     })
 // })
 app.use('/',homeRoute)
-app.use('/products', ProductRoute);
+app.use('/products', productRoute);
+app.use('/carts',cartRoute)
+app.use('/users',cartRoute)
 
 
 //mongoose
@@ -43,13 +47,15 @@ mongoose.set('useFindAndModify',false)
 mongoose.connect('mongodb+srv://keikaavousi:qaqjob-rovjy3-pucSaq@cluster0-ffwd2.mongodb.net/shop?retryWrites=true&w=majority',{useNewUrlParser:true})
 .then(result=>{
     app.listen(process.env.PORT || port,()=>{
-        console.log('connected!')
+        console.log('connect')
     })
 })
 .catch(err=>{
     console.log(err)
 })
 
+
+module.exports = app
 //listen
 
 // app.listen(process.env.PORT || port , ()=>{

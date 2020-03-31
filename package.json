@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node app.js"
   },
   "author": "",
@@ -13,7 +13,9 @@
     "cors": "^2.8.5",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "jest": "^25.2.4",
     "mongoose": "^5.9.6",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }

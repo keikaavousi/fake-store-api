@@ -34,3 +34,16 @@ PUT:
 
 DELETE:
 /products                   delete a product, you should send an id and it will return you the selected product. remember that this api only work with id passed, otherwise it will return an error.
+
+
+
+
+cart
+GET:
+/cart       get all carts
+/cart/:id   get single cart with its items
+/user/:userid/cart   get single cart with its items
+/cart?limit=3   limit return results 
+/cart?sort=desc     asc|desc  get carts in ascending or descending orders (default to asc)
+/cart?userid=3      get user's carts
+/cart?startdate=2020-10-03&enddate=2020-12-12   get carts in date range

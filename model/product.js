@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
-const ProductSchema = new schema({
+const productSchema = new schema({
     id:{
         type:Number,
         required:true
@@ -14,15 +14,9 @@ const ProductSchema = new schema({
         type:Number,
         required:true
     },
-    description:{
-        type:String
-    },
-    image:{
-        type:String
-    },
-    category:{
-        type:String
-    }
+    description:String,
+    image:String,
+    category:String
 })
 
-module.exports = mongoose.model('product',ProductSchema)
+module.exports = mongoose.model('product',productSchema)

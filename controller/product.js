@@ -44,47 +44,39 @@ module.exports.addProduct = (req, res) => {
       message: "data is undefined"
     })
   } else {
-    res.json({
-      id:Product.find().count()+1,
-      title: req.body.title,
-      price: req.body.price,
-      description: req.body.description,
-      image: req.body.image,
-      category: req.body.category
-    })
+    
+    Product.find().countDocuments(function(err, count){
+      res.json({...req.body,id:count+1})
+  });
+
+    
   }
 }
 
 module.exports.editProduct = (req, res) => {
-  if (typeof req.body == undefined || req.body.id == null) {
+  if (typeof req.body == undefined || req.params.id == null) {
     res.json({
       status: "error",
       message: "something went wrong! check your sent data"
     })
   } else {
-    res.json({
-      id: req.params.id,
-      title: req.body.title,
-      price: req.body.price,
-      description: req.body.description,
-      image: req.body.image,
-      category: req.body.category
-    })
+    res.json({...req.body,id:req.params.id})
   }
 }
 
 module.exports.deleteProduct = (req, res) => {
-    if (typeof req.body == undefined || req.body.id == null) {
+    if (typeof req.body == undefined || req.params.id == null) {
         res.json({
           status: "error",
           message: "something went wrong! check your sent data"
         })
       } else {
-      Product.findById(req.params.id)
-      .then(product=>{
-        res.json({
-            product
-          })
+      Product.findOne({
+        id:req.params.id
       })
+      .then(product=>{
+        res.json(product)
+      })
+      .catch(err=>console.log(err))
     }
   }
