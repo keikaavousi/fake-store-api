@@ -1,7 +1,7 @@
 .intro{
     margin-top: 200px;
     @media only screen and (max-width:768px){
-        margin-top: 20px;
+        margin-top: 50px;
     }
     h1{
         font-size: 2.5em;
@@ -20,8 +20,10 @@
         } 
         a{
             margin-bottom: 10px;
+            width:200px;
+            justify-content: space-between;
             @media only screen and (max-width:480px){
-            width: 50%;
+            width: 70%;
             justify-content: space-between;
             font-size: 0.8em;
             img{
@@ -66,33 +68,13 @@ section{
         }
     }
 }
-pre{
-    width: 100%;
-    border-radius: 7px;
-    margin-bottom: 20px;
-}
-code{
-    width: 100%;
-    background-color: #f5f5f5;
-    padding:20px;
-    display: block;
-    line-height: 2;
-    font-size: 1.1em;
-}
-code:empty{
-    padding: 0;
-}
-#try{
-    margin-top: 100px;
-    code{
-         overflow-x: auto;
-    }
-}
 footer{
     padding: 20px;
     text-align: center;
     padding: 50px;
     background-color: #f5f5f5;
+    position: relative;
+    z-index: 10;
     p{
         font-weight: 300;
     }
@@ -146,9 +128,59 @@ footer{
 .heading{
     width: 100%;
     color: $primary;
+    svg{
+        position: relative;
+        bottom: -2px;
+    }
 }
+
 @media only screen and (max-width:768px){
 main{
     padding: 30px;
 }
+}
+
+
+.logo{
+    img{
+         width: 50px;
+    }
+    position: absolute;
+    left: 20.5%;
+    top: 30px;
+    z-index: 10;
+   
+    @media only screen and (max-width:768px){
+        position: absolute;
+        left: 15px;
+        top: -5px;
+            padding: 30px;
+            img{
+                width: 35px;
+            }
+    }
+}
+aside{
+    position: fixed !important;
+    left:0;
+    top: 0;
+    background-color: #f5f5f5cc;
+    height: 100vh;
+    overflow: auto;
+    ul{
+        padding: 40px 30px;
+        li{
+            margin-bottom: 20px;
+        }
+        &:last-child{
+            padding-bottom: 200px;
+        }
+    }
+}
+#cart{
+    margin-top: 100px;
+}
+.auto-overflow{
+    height: 100vh;
+    overflow: auto;
 }

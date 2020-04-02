@@ -31,7 +31,7 @@ describe("Testing products API", () => {
         expect(response.status).toBe(200)
         console.log('get with querystring', response.body)
         expect(response.body).not.toStrictEqual([])
-        expect(response.data).toHaveLength(3);
+        expect(response.body).toHaveLength(3);
     })
 
     it("post a product", async () => {

@@ -39,7 +39,7 @@ app.disable('view cache');
 app.use('/',homeRoute)
 app.use('/products', productRoute);
 app.use('/carts',cartRoute)
-app.use('/users',cartRoute)
+app.use('/users',userRoute)
 
 
 //mongoose

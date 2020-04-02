@@ -1,43 +1,43 @@
 </main>
 </div>
 <footer>
-    <p>Made with <span class="heart">&hearts;</span> by <a target="_blank" rel="noopener noreferrer" href="https://keikaavousi.com">MohammadReza Keikavousi</a></p>
-    <a href="#" class="donate" rel="noopener noreferrer">
-        <img src='/icons/coffee.svg'/>
+    <p>Made with <span class="heart">&hearts;</span> by <a target="_blank" rel="noopener noreferrer"
+            href="https://keikaavousi.com">MohammadReza Keikavousi</a></p>
+    <a href="https://idpay.ir/keikaavousi" class="donate" rel="noopener noreferrer">
+        <img src='/icons/coffee.svg' />
         Buy me a coffee</a>
 </footer>
+
+
 <script src="/js/polyfill.min.js"></script>
 <script>
-    let wrapper = document.querySelector('#result code')
-    let loading = document.createElement('span')
-    loading.className="loading"
-
-    document.getElementById("fetch_btn").addEventListener('click',function(){
-        wrapper.appendChild(loading)
-        fetch('https://fakestoreapi.herokuapp.com/products/1')
-            .then(res=>res.json())
-            .then(json=>{
-                wrapper.textContent=JSON.stringify(json,undefined,2)
-            })
-    })
-
-    let targetAnchor = document.getElementById("try")
-
-    document.querySelector("#try_link").addEventListener('click',function(e){
-
-            e.preventDefault()
-                window.scrollTo({
-                    top: targetAnchor.offsetTop-50,
-                    behavior:'smooth'
-                 });
-           
-    })
-
-    document.getElementById("menu-icon").addEventListener('click',function(e){
+    document.getElementById("menu-icon").addEventListener('click', function (e) {
         document.getElementById("menu").classList.toggle("open")
         e.target.classList.toggle('open')
     })
-
 </script>
+<script>
+    //let targetAnchor = document.getElementById("try")
+
+    // let links = document.querySelectorAll("a[href*='#']")
+
+    // for (let i = 0; i < links.length; i++) {
+    //     links[i].addEventListener('click', function (e) {
+    //         e.preventDefault()
+
+    //         let hash = links[i].hash
+    //         let targetAnchor = document.querySelector(hash)
+    //         console.log(hash,targetAnchor.offsetTop,window.scrollY)
+
+    //         window.scrollTo({
+    //             top: targetAnchor.offsetTop - 50 + window.scrollY,
+    //             behavior: 'smooth'
+    //         });
+
+    //     })
+    // }
+</script>
+
 </body>
+
 </html>

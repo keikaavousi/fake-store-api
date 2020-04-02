@@ -1,0 +1,267 @@
+<section class="row">
+    <div class="col-md-12 code-area">
+        <h2 class="heading">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            Users</h2>
+        <h3>Get all products</h3>
+        <pre><code>fetch(<span class="c-api">'https://fakestoreapi.herokuapp.com/products'</span>)
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+            <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+            [
+                {
+                    id:1,
+                    title:'...',
+                    price:'...',
+                    category:'...',
+                    description:'...',
+                    image:'...'
+                },
+                <span class="c-comment">/*...*/</span>
+                {
+                    id:30,
+                    title:'...',
+                    price:'...',
+                    category:'...',
+                    description:'...',
+                    image:'...'
+                }
+            ]
+        </code></pre>
+
+
+        <h3>Get a single product</h3>
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/1'</span>)
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+            <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+            {
+                id:1,
+                title:'...',
+                price:'...',
+                category:'...',
+                description:'...',
+                image:'...'
+            }
+        </code></pre>
+
+
+
+        <h3>Limit results</h3>
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products?limit=5'</span>)
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+            <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+        [
+            {
+                id:1,
+                title:'...',
+                price:'...',
+                category:'...',
+                description:'...',
+                image:'...'
+            }
+            <span class="c-comment">/*...*/</span>
+            {
+                id:5,
+                title:'...',
+                price:'...',
+                category:'...',
+                description:'...',
+                image:'...'
+            }
+        ]
+        </code></pre>
+
+
+
+        <h3>Sort results</h3>
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products?sort=desc'</span>)
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+            <p>
+                <span class="tips">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </span>Default value is in ascending mode, you can use with 'desc' or 'asc' as you want.
+            </p>
+            <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+        [
+            {
+                id:30,
+                title:'...',
+                price:'...',
+                category:'...',
+                description:'...',
+                image:'...'
+            }
+            <span class="c-comment">/*...*/</span>
+            {
+                id:1,
+                title:'...',
+                price:'...',
+                category:'...',
+                description:'...',
+                image:'...'
+            }
+        ]
+        </code></pre>
+
+
+
+
+        <h3>Get Product in a specific category</h3>
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/category/jewelery'</span>)
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+            <p>
+                <span class="tips">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </span>You can also use limit(Number) and sort(asc|desc) as query string to get your ideal results
+            </p>
+            <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+        [
+            {
+                id:5,
+                title:'...',
+                price:'...',
+                category:'jewelery',
+                description:'...',
+                image:'...'
+            }
+            <span class="c-comment">/*...*/</span>
+            {
+                id:8,
+                title:'...',
+                price:'...',
+                category:'jewelery',
+                description:'...',
+                image:'...'
+            }
+        ]
+        </code></pre>
+        
+
+
+        <h3>Add a new product</h3>
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products'</span>,{
+            method:"POST",
+            body:JSON.stringify(
+                {
+                    title: 'test product',
+                    price: 13.5,
+                    description: 'lorem ipsum set',
+                    image: 'https://i.pravatar.cc',
+                    category: 'electronic'
+                }
+            )
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+            <p>
+                <span class="tips">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </span>If you send an object like the code above, it will return you an object with a new id 31. 
+                remember that nothing in real will insert into database. so if you want to access id 31 you will get 404 error.
+            </p>
+            <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+            {
+                id:31,
+                title:'...',
+                price:'...',
+                category:'...',
+                description:'...',
+                image:'...'
+            }
+        </code></pre>
+
+
+
+        <h3>Update a product</h3>
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/7'</span>,{
+            method:"PUT",
+            body:JSON.stringify(
+                {
+                    title: 'test product',
+                    price: 13.5,
+                    description: 'lorem ipsum set',
+                    image: 'https://i.pravatar.cc',
+                    category: 'electronic'
+                }
+            )
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+            <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/7'</span>,{
+                method:"PATCH",
+                body:JSON.stringify(
+                    {
+                        title: 'test product',
+                        price: 13.5,
+                        description: 'lorem ipsum set',
+                        image: 'https://i.pravatar.cc',
+                        category: 'electronic'
+                    }
+                )
+            })
+                .then(res=>res.json())
+                .then(json=>console.log(json))</code></pre>
+            <p>
+                <span class="tips">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </span>It will return you an object with sent id.
+                remember that nothing in real will update in database.
+            </p>
+            <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+            {
+                id:7,
+                title:'new title',
+                price:'new price',
+                category:'new category',
+                description:'new description',
+                image:'new image url'
+            }
+        </code></pre>
+
+
+
+        <h3>Delete a product</h3>
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/6'</span>,{
+            method:"DELETE"
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+            <p>
+                <span class="tips">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </span>The product will not be deleted on database. but if you sent data successfully it will return you the fake deleted product.
+            </p>
+            <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+            {
+                id:6,
+                title:'...',
+                price:'...',
+                category:'...',
+                description:'...',
+                image:'...'
+            }
+        </code></pre>
+
+
+    </div>
+</section>

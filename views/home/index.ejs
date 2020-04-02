@@ -70,5 +70,20 @@
     <a href="" class="btn btn-primary">View Details on Docs</a>
  </section>
 
-
+ <script>
+     let wrapper = document.querySelector('#result code')
+     let loading = document.createElement('span')
+     loading.className="loading"
+ 
+     document.getElementById("fetch_btn").addEventListener('click',function(){
+         wrapper.appendChild(loading)
+         fetch('https://fakestoreapi.herokuapp.com/products/1')
+             .then(res=>res.json())
+             .then(json=>{
+                 wrapper.textContent=JSON.stringify(json,undefined,2)
+             })
+     })
+ 
+     
+ </script>
 <%- include ("../shared/footer.ejs") %>

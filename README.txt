@@ -40,10 +40,15 @@ DELETE:
 
 cart
 GET:
-/cart       get all carts
-/cart/:id   get single cart with its items
-/user/:userid/cart   get single cart with its items
-/cart?limit=3   limit return results 
-/cart?sort=desc     asc|desc  get carts in ascending or descending orders (default to asc)
-/cart?userid=3      get user's carts
-/cart?startdate=2020-10-03&enddate=2020-12-12   get carts in date range
+/carts       get all carts
+/carts/:id   get single cart with its items
+/carts?startdate=2020-10-03&enddate=2020-12-12   get carts in date range
+
+
+/carts/user/1     get a user cart
+/carts/user/1?startdate=2020-10-03&enddate=2020-12-12   get user carts in date range
+
+
+/carts?limit=3   limit return results 
+/carts?sort=desc     asc|desc  get carts in ascending or descending orders (default to asc)
+/carts?userid=3      get user's carts

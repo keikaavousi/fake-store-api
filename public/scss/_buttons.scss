@@ -98,16 +98,17 @@ button[disabled]{
     filter: invert(100%);
 }
 .btn-outline{
-    border: 1px solid #111;
+    border: 1px solid $primary;
     border-radius: .25rem;
     padding: 6px 12px;
     background-color: transparent;
+    color: $primary;
     .btn-icon{
        position: relative;
        left: -5px;
     }
     &:hover,&:focus,&:active{
-        background-color: #111;
+        background-color: $primary;
         color: #fff;
         .btn-icon{
             filter:invert(100%)

@@ -28,12 +28,11 @@ const userSchema = new schema({
             required:true
         }
     },
-    avatar:String,
     address:{
         city:String,
         street:String,
-        alley:String,
         number:Number,
+        zipcode:String,
         geolocation:{
             lat:String,
             long:String

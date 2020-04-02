@@ -30,7 +30,7 @@ module.exports.getProductsInCategory = (req,res) => {
 
   Product.find({
     category
-  }).limit(limit).sort({id:sort})
+  }).select(['-_id']).limit(limit).sort({id:sort})
   .then(products => {
     res.json(products)
   })
@@ -44,10 +44,21 @@ module.exports.addProduct = (req, res) => {
       message: "data is undefined"
     })
   } else {
-    
+    let productCount = 0;
     Product.find().countDocuments(function(err, count){
-      res.json({...req.body,id:count+1})
-  });
+      productCount = count
+  })
+  .then(() => {
+    const product = new Product({
+      id: productCount + 1,
+      ...req.body
+    })
+    // product.save()
+    //   .then(product => res.json(product))
+    //   .catch(err => console.log(err))
+    res.json(product)
+  })
+
 
     
   }
@@ -65,15 +76,15 @@ module.exports.editProduct = (req, res) => {
 }
 
 module.exports.deleteProduct = (req, res) => {
-    if (typeof req.body == undefined || req.params.id == null) {
+    if (req.params.id == null) {
         res.json({
           status: "error",
-          message: "something went wrong! check your sent data"
+          message: "cart id should be provided"
         })
       } else {
       Product.findOne({
         id:req.params.id
-      })
+      }).select(['-_id'])
       .then(product=>{
         res.json(product)
       })
