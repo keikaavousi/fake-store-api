@@ -258,3 +258,4 @@ fields:
 
 - Add graphql support
 - Add pagination
+- Add another language support
