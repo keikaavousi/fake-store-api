@@ -1,5 +1,5 @@
 %btn{
-    padding: 6px 20px;
+    padding: 9px 12px 6px;
     border: none;
     display: inline-flex;
     border-radius: .25rem;
@@ -100,7 +100,7 @@ button[disabled]{
 .btn-outline{
     border: 1px solid $primary;
     border-radius: .25rem;
-    padding: 6px 12px;
+    padding: 9px 12px 6px;
     background-color: transparent;
     color: $primary;
     .btn-icon{
@@ -137,5 +137,5 @@ button[disabled]{
     top: -3px;
 }
 .btn-large{
-    padding:12px 20px
+    padding:16px 20px 12px
 }

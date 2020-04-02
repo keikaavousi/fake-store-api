@@ -17,25 +17,25 @@
     })
 </script>
 <script>
-    //let targetAnchor = document.getElementById("try")
+   // let targetAnchor = document.getElementById("try")
 
-    // let links = document.querySelectorAll("a[href*='#']")
+    let links = document.querySelectorAll("a[href*='#']")
 
-    // for (let i = 0; i < links.length; i++) {
-    //     links[i].addEventListener('click', function (e) {
-    //         e.preventDefault()
+    for (let i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function (e) {
+            e.preventDefault()
 
-    //         let hash = links[i].hash
-    //         let targetAnchor = document.querySelector(hash)
-    //         console.log(hash,targetAnchor.offsetTop,window.scrollY)
+            let hash = links[i].hash
+            let targetAnchor = document.querySelector(hash)
+            console.log(hash,targetAnchor.offsetTop,window.scrollY)
 
-    //         window.scrollTo({
-    //             top: targetAnchor.offsetTop - 50 + window.scrollY,
-    //             behavior: 'smooth'
-    //         });
+            window.scrollTo({
+                top: targetAnchor.offsetTop + 600,
+                behavior: 'smooth'
+            });
 
-    //     })
-    // }
+        })
+    }
 </script>
 
 </body>
