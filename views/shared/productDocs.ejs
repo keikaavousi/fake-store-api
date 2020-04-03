@@ -2,7 +2,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
             Products</h2>
         <h3 id="p-all">Get all products</h3>
-        <pre><code>fetch(<span class="c-api">'https://fakestoreapi.herokuapp.com/products'</span>)
+        <pre><code>fetch(<span class="c-api">'https://fakestoreapi.com/products'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
             <button class="show-output btn btn-outline">Show output</button>
@@ -31,7 +31,7 @@
 
 
         <h3 id="p-single">Get a single product</h3>
-        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/1'</span>)
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/1'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
             <button class="show-output btn btn-outline">Show output</button>
@@ -50,7 +50,7 @@
 
 
         <h3 id="p-limit">Limit results</h3>
-        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products?limit=5'</span>)
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products?limit=5'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
             <button class="show-output btn btn-outline">Show output</button>
@@ -80,7 +80,7 @@
 
 
         <h3 id="p-sort">Sort results</h3>
-        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products?sort=desc'</span>)
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products?sort=desc'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
             <p>
@@ -116,7 +116,7 @@
 
 
         <h3 id="p-category">Get products in a specific category</h3>
-        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/category/jewelery'</span>)
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/category/jewelery'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
             <p>
@@ -151,7 +151,7 @@
 
 
         <h3 id="p-new">Add new product</h3>
-        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products'</span>,{
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products'</span>,{
             method:"POST",
             body:JSON.stringify(
                 {
@@ -187,7 +187,7 @@
 
 
         <h3 id="p-update">Update a product</h3>
-        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/7'</span>,{
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/7'</span>,{
             method:"PUT",
             body:JSON.stringify(
                 {
@@ -201,7 +201,7 @@
         })
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/7'</span>,{
+            <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/7'</span>,{
                 method:"PATCH",
                 body:JSON.stringify(
                     {
@@ -237,7 +237,7 @@
 
 
         <h3 id="p-delete">Delete a product</h3>
-        <pre><code>fetch('<span class="c-api">https://fakestoreapi.herokuapp.com/products/6'</span>,{
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/6'</span>,{
             method:"DELETE"
         })
             .then(res=>res.json())

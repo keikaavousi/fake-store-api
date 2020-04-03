@@ -1,10 +1,10 @@
 # FakeStoreAPI
 
-[FakeStoreAPI](https://fakestoreapi.herokuapp.com) is a free online REST API that you can use whenever you need Pseudo-real data for
+[FakeStoreAPI](https://fakestoreapi.com) is a free online REST API that you can use whenever you need Pseudo-real data for
         your ecommerce or shopping website without runnig any server-side code. 
         It's awesome for teaching purposes, sample codes, test and etc.
 
-You can visit in detail docs in [FakeStoreAPI](https://fakestoreapi.herokuapp.com) for more information.
+You can visit in detail docs in [FakeStoreAPI](https://fakestoreapi.com) for more information.
 
 ## Why?
 When I wanted to design a shopping website prototype and needed fake data, I had to
@@ -17,9 +17,9 @@ so I decided to create this simple web service whit nodejs(express) and mongodb 
 
 There are 3 main resources need in shopping prototypes:
 
-- Products https://fakestoreapi.herokuapp.com/products
-- Carts https://fakestoreapi.herokuapp.com/carts
-- Users https://fakestoreapi.herokuapp.com/users
+- Products https://fakestoreapi.com/products
+- Carts https://fakestoreapi.com/carts
+- Users https://fakestoreapi.com/users
 
 ## How to
 
@@ -28,7 +28,7 @@ you can fetch data with any kind of methods you know(fetch api,axios,jquery ajax
 ### Get all products
 
 ```js
-fetch('https://fakestoreapi.herokuapp.com/products')
+fetch('https://fakestoreapi.com/products')
   .then(res => res.json())
   .then(json => console.log(json))
 ```
@@ -36,7 +36,7 @@ fetch('https://fakestoreapi.herokuapp.com/products')
 ### Get a single product
 
 ```js
-fetch('https://fakestoreapi.herokuapp.com/products/1')
+fetch('https://fakestoreapi.com/products/1')
   .then(res => res.json())
   .then(json => console.log(json))
 ```
@@ -44,7 +44,7 @@ fetch('https://fakestoreapi.herokuapp.com/products/1')
 ### Add new product
 
 ```js
-fetch('https://fakestoreapi.herokuapp.com/products', {
+fetch('https://fakestoreapi.com/products', {
   method: 'POST',
   body: JSON.stringify({
      title: 'test product',
@@ -74,7 +74,7 @@ Note: Posted data will not really insert into database and just return a fake id
 ### Updating a product
 
 ```js
-fetch('https://fakestoreapi.herokuapp.com/products/7', {
+fetch('https://fakestoreapi.com/products/7', {
   method: 'PUT',
   body: JSON.stringify({
      title: 'test product',
@@ -100,7 +100,7 @@ fetch('https://fakestoreapi.herokuapp.com/products/7', {
 ```
 
 ```js
-fetch('https://fakestoreapi.herokuapp.com/products/8', {
+fetch('https://fakestoreapi.com/products/8', {
   method: 'PATCH',
   body: JSON.stringify({
      title: 'test product',
@@ -130,7 +130,7 @@ Note: Edited data will not really updated into database.
 ### Deleting a resource
 
 ```js
-fetch('https://fakestoreapi.herokuapp.com/products/8', {
+fetch('https://fakestoreapi.com/products/8', {
   method: 'DELETE'
 })
 ```
@@ -143,7 +143,7 @@ You can use query sting to limit results or sort by asc|desc
 
 ```js
 // Will return all the posts that belong to the first user
-fetch('https://fakestoreapi.herokuapp.com/products?limit=3&sort=desc')
+fetch('https://fakestoreapi.com/products?limit=3&sort=desc')
   .then(res => res.json())
   .then(json => console.log(json))
 ```

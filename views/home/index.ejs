@@ -31,7 +31,7 @@
 <!-- tryit -->
 <section id="try" class="row">
     <h2 class="heading">Example Code</h2>
-    <pre><code>fetch('https://fakestoreapi.herokuapp.com/products/1')
+    <pre><code>fetch('https://fakestoreapi.com/products/1')
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
     <button id="fetch_btn" class="btn btn-primary">Try it</button>
@@ -77,7 +77,7 @@
  
      document.getElementById("fetch_btn").addEventListener('click',function(){
          wrapper.appendChild(loading)
-         fetch('https://fakestoreapi.herokuapp.com/products/1')
+         fetch('https://fakestoreapi.com/products/1')
              .then(res=>res.json())
              .then(json=>{
                  wrapper.textContent=JSON.stringify(json,undefined,2)
