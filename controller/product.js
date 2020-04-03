@@ -51,7 +51,11 @@ module.exports.addProduct = (req, res) => {
   .then(() => {
     const product = new Product({
       id: productCount + 1,
-      ...req.body
+      title:req.body.title,
+      price:req.body.price,
+      description:req.body.description,
+      image:req.body.image,
+      category:req.body.category
     })
     // product.save()
     //   .then(product => res.json(product))
@@ -71,7 +75,14 @@ module.exports.editProduct = (req, res) => {
       message: "something went wrong! check your sent data"
     })
   } else {
-    res.json({...req.body,id:req.params.id})
+    res.json({
+      id:req.params.id,
+      title:req.body.title,
+      price:req.body.price,
+      description:req.body.description,
+      image:req.body.image,
+      category:req.body.category
+    })
   }
 }
 

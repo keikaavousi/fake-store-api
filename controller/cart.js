@@ -64,7 +64,9 @@ module.exports.addCart = (req,res) => {
         .then(() => {
         const cart = new Cart({
           id: cartCount + 1,
-          ...req.body
+          userId: req.body.userId,
+          date:req.body.date,
+          products:req.body.products
         })
         // cart.save()
         //   .then(cart => res.json(cart))
@@ -85,7 +87,12 @@ module.exports.editCart = (req,res) => {
           message: "something went wrong! check your sent data"
         })
       } else {
-        res.json({...req.body,id:req.params.id})
+        res.json({
+          id:req.params.id,
+          userId: req.body.userId,
+          date:req.body.date,
+          products:req.body.products
+        })
       }
 }
 
