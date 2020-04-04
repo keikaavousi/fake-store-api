@@ -8,8 +8,9 @@
     <div class="col-md-6 intro">
         <h2 class="heading">How to use it</h2>
         <p>
-            fakeStoreApi can be use with any type of shopping project that needs products, cart and users in JSON format.
-            you can use examples below to check how fakeStoreApi works and feel free to enjoy it in your awesome projects!
+            fakeStoreApi can be used with any type of shopping project that needs products, carts, and users in JSON
+            format. you can use examples below to check how fakeStoreApi works and feel free to enjoy it in your awesome
+            projects!
         </p>
     </div>
 </section>
@@ -17,19 +18,16 @@
 <section class="row">
 
     <aside class="col-md-2 hidden-xs">
-         <%- include("../shared/aside.ejs") %>
+        <%- include("../shared/aside.ejs") %>
     </aside>
-   
+
 
     <div class="col-md-12 code-area">
-        <div class="col-md-12">
-        <%- include("../shared/productDocs.ejs") %>
+            <%- include("../shared/productDocs.ejs") %>
 
-        <%- include("../shared/cartDocs.ejs") %>
+            <%- include("../shared/cartDocs.ejs") %>
 
-        <%- include("../shared/userDocs.ejs") %>
-
-        </div>
+            <%- include("../shared/userDocs.ejs") %>
     </div>
 
 </section>
@@ -55,15 +53,14 @@
 <script>
     let show_btns = document.querySelectorAll(".show-output")
     Array.from(show_btns).forEach(element => {
-        element.addEventListener("click",function(){
+        element.addEventListener("click", function () {
             element.nextElementSibling.classList.toggle("block")
-            if(element.nextElementSibling.classList.contains("block")){
-                  element.textContent = "Hide output"
-            }
-            else{
+            if (element.nextElementSibling.classList.contains("block")) {
+                element.textContent = "Hide output"
+            } else {
                 element.textContent = "Show output"
             }
-          
+
         })
     })
 </script>
