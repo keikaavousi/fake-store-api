@@ -40,7 +40,7 @@ app.use('/users',userRoute)
 
 //mongoose
 mongoose.set('useFindAndModify',false)
-mongoose.connect('mongodb+srv://keikaavousi:qaqjob-rovjy3-pucSaq@cluster0-ffwd2.mongodb.net/shop?retryWrites=true&w=majority',{useNewUrlParser:true})
+mongoose.connect('mongodb://[dbusername]:[dbpassword]/[dbname]',{useNewUrlParser:true})
 .then(result=>{
     app.listen(process.env.PORT || port,()=>{
         console.log('connect')
