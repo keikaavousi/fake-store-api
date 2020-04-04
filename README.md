@@ -196,8 +196,8 @@ GET:
 - /carts (get all carts)
 - /carts/1 (get specific cart based on id)  
 - /carts?startdate=2020-10-03&enddate=2020-12-12 (get carts in date range)
-- /carts/user/1 get a user cart
-- /carts/user/1?startdate=2020-10-03&enddate=2020-12-12   get user carts in date range
+- /carts/user/1 (get a user cart)
+- /carts/user/1?startdate=2020-10-03&enddate=2020-12-12 (get user carts in date range)
 - /carts?limit=5 (limit return results )
 - /carts?sort=desc (asc|desc get carts in ascending or descending orders (default to asc))
 
