@@ -1,17 +1,16 @@
 # FakeStoreAPI
 
 [FakeStoreAPI](https://fakestoreapi.com) is a free online REST API that you can use whenever you need Pseudo-real data for
-        your ecommerce or shopping website without runnig any server-side code. 
-        It's awesome for teaching purposes, sample codes, test and etc.
+        your e-commerce or shopping website without running any server-side code. 
+        It's awesome for teaching purposes, sample codes, tests and etc.
 
 You can visit in detail docs in [FakeStoreAPI](https://fakestoreapi.com) for more information.
 
 ## Why?
 When I wanted to design a shopping website prototype and needed fake data, I had to
-use lorem ipsum data or create a json file from base. I didn't find any online free web service
+use lorem ipsum data or create a JSON file from the base. I didn't find any online free web service
 to return semi-real shop data instead of lorem ipsum data.
-so I decided to create this simple web service whit nodejs(express) and mongodb as database.
-
+so I decided to create this simple web service whit NodeJs(express) and MongoDB as a database.
 
 ## Resources
 
@@ -22,8 +21,7 @@ There are 3 main resources need in shopping prototypes:
 - Users https://fakestoreapi.com/users
 
 ## How to
-
-you can fetch data with any kind of methods you know(fetch api,axios,jquery ajax,...)
+you can fetch data with any kind of methods you know(fetch API, Axios, jquery ajax,...)
 
 ### Get all products
 
@@ -69,7 +67,7 @@ fetch('https://fakestoreapi.com/products', {
 */
 ```
 
-Note: Posted data will not really insert into database and just return a fake id.
+Note: Posted data will not really insert into the database and just return a fake id.
 
 ### Updating a product
 
@@ -125,7 +123,7 @@ fetch('https://fakestoreapi.com/products/8', {
 */
 ```
 
-Note: Edited data will not really updated into database.
+Note: Edited data will not really be updated into the database.
 
 ### Deleting a resource
 
@@ -135,11 +133,11 @@ fetch('https://fakestoreapi.com/products/8', {
 })
 ```
 
-Note: Nothing will delete on database.
+Nothing will delete on the database.
 
 ### Sort and Limit
 
-You can use query sting to limit results or sort by asc|desc
+You can use query string to limit results or sort by asc|desc
 
 ```js
 // Will return all the posts that belong to the first user
