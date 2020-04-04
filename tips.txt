@@ -1,7 +1,0 @@
-
-                // document.querySelector('#result code').textContent="{\n"
-                // Object.keys(json).forEach(function(item){
-                //     document.querySelector('#result code').textContent+=`<span class='object-key'>item</span>:<span class='object-value'>json[item]</span>,<br>`
-                // })
-                // document.querySelector('#result code').textContent+="\n}"
-
