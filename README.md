@@ -125,7 +125,7 @@ fetch('https://fakestoreapi.com/products/8', {
 
 Note: Edited data will not really be updated into the database.
 
-### Deleting a resource
+### Deleting a product
 
 ```js
 fetch('https://fakestoreapi.com/products/8', {
@@ -148,7 +148,7 @@ fetch('https://fakestoreapi.com/products?limit=3&sort=desc')
 
 ## All available routes
 
-### Product
+### Products
 ```js
 fields: 
 {
