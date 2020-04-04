@@ -11,9 +11,14 @@
 
 <script src="/js/polyfill.min.js"></script>
 <script>
+    let icon = document.getElementById("menu-icon")
+    let menu = document.getElementById("menu")
+
     document.getElementById("menu-icon").addEventListener('click', function (e) {
-        document.getElementById("menu").classList.toggle("open")
-        e.target.classList.toggle('open')
+        icon.classList.toggle("open")
+        menu.classList.toggle("open")
+        document.body.classList.toggle("fix")
+        document.documentElement.classList.toggle("body-fix")
     })
 </script>
 <script>
