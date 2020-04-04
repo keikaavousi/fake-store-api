@@ -148,7 +148,8 @@ fetch('https://fakestoreapi.com/products?limit=3&sort=desc')
 
 ## All available routes
 
-###Product
+### Product
+```js
 fields: 
 {
     id:Number,
@@ -158,28 +159,30 @@ fields:
     description:String,
     image:String
 }
+```
 
-- GET
--- /products (get all products)
--- /products/1 (get specific product based on id)  
--- /products?limit=5 (limit return results )
--- /products?sort=desc (asc|desc  get products in ascending or descending orders (default to asc))
--- /products/category/jewelery  (get all products in specific category)
--- /products/category/jewelery?sort=desc (asc|desc get products in ascending or descending orders (default to asc))
+GET:
+- /products (get all products)
+- /products/1 (get specific product based on id)  
+- /products?limit=5 (limit return results )
+- /products?sort=desc (asc|desc  get products in ascending or descending orders (default to asc))
+- /products/category/jewelery  (get all products in specific category)
+- /products/category/jewelery?sort=desc (asc|desc get products in ascending or descending orders (default to asc))
 
-- POST
--- /products 
+POST:
+- /products 
 
 -PUT,PATCH
--- /products/1 
+- /products/1 
 
 -DELETE
--- /products/1 
+- /products/1 
 
 
 
 
-###Carts
+### Carts
+```js
 fields: 
 {
     id:Number,
@@ -187,30 +190,31 @@ fields:
     date:Date,
     products:[{productId:Number,quantity:Number}]
 }
--- GET
---- /carts (get all carts)
---- /carts/1 (get specific cart based on id)  
---- /carts?startdate=2020-10-03&enddate=2020-12-12 (get carts in date range)
---- /carts/user/1 get a user cart
---- /carts/user/1?startdate=2020-10-03&enddate=2020-12-12   get user carts in date range
+```
 
---- /carts?limit=5 (limit return results )
---- /carts?sort=desc (asc|desc get carts in ascending or descending orders (default to asc))
+GET:
+- /carts (get all carts)
+- /carts/1 (get specific cart based on id)  
+- /carts?startdate=2020-10-03&enddate=2020-12-12 (get carts in date range)
+- /carts/user/1 get a user cart
+- /carts/user/1?startdate=2020-10-03&enddate=2020-12-12   get user carts in date range
+- /carts?limit=5 (limit return results )
+- /carts?sort=desc (asc|desc get carts in ascending or descending orders (default to asc))
 
--- POST
---- /carts 
+POST:
+- /carts 
 
---PUT,PATCH
---- /carts/1 
+PUT,PATCH:
+- /carts/1 
 
---DELETE
---- /carts/1 
-
-
-
+DELETE:
+- /carts/1 
 
 
-###Users
+
+
+### Users
+```js
 fields: 
 {
     id:20,
@@ -233,20 +237,21 @@ fields:
     },
     phone:String
 }
--- GET
---- /users (get all users)
---- /users/1 (get specific user based on id)  
---- /users?limit=5 (limit return results )
---- /users?sort=desc (asc|desc get users in ascending or descending orders (default to asc))
+```
+GET:
+- /users (get all users)
+- /users/1 (get specific user based on id)  
+- /users?limit=5 (limit return results )
+- /users?sort=desc (asc|desc get users in ascending or descending orders (default to asc))
 
--- POST
---- /users 
+POST:
+- /users 
 
---PUT,PATCH
---- /users/1 
+PUT,PATCH:
+- /users/1 
 
---DELETE
---- /users/1 
+DELETE:
+- /users/1 
  
 
 
