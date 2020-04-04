@@ -35,6 +35,9 @@ code:empty{
     }
     h3{
     margin-top: 50px;
+    @media screen and (max-width:480px){
+        margin-top: 30px;
+    }
     font-size: 1.4em;
     }
 }
