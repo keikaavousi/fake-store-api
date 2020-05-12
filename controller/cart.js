@@ -25,7 +25,6 @@ module.exports.getQuantity = (req,res) => {
   let today = `${date.getFullYear()}-0${date.getMonth()+1}-${date.getDate()}`
 
  
-
     Cart.find({ 
       $or:[
         { 
@@ -34,14 +33,17 @@ module.exports.getQuantity = (req,res) => {
         "products.id":req.params.id
       },
       { 
-        date: { $gte: today },
+        date: { 
+          $lt: new Date(), 
+          $gte: new Date(new Date().setDate(new Date().getMinutes()-10))
+         },
         completed:false,
         "products.id":req.params.id
       }
     ]
      
     })
-    .then(cart=>res.json(cart.length))
+    .then(cart=>res.json(cart))
 }
 
 
