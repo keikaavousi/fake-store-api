@@ -3,11 +3,12 @@ const router = express.Router()
 const cart = require('../controller/cart')
 
 router.get('/',cart.getAllCarts)
-router.get('/:id',cart.getSingleCart)
+//router.get('/:id',cart.getSingleCart)
 router.get('/user/:userid',cart.getCartsbyUserid)
+router.get('/quantity/:id',cart.getQuantity)
+
 
 router.post('/',cart.addCart)
-//router.post('/:id',cart.addtoCart)
 
 router.put('/:id',cart.editCart)
 router.patch('/:id',cart.editCart)

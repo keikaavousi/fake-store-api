@@ -1,12 +1,26 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
+const Media = require('./media')
 
 const productSchema = new schema({
-    id:{
-        type:Number,
+    title:{
+        type:String,
         required:true
     },
-    title:{
+    slug:{
+        type:String,
+        required:true
+    },
+    mintime:{
+        type:String,
+        required:true
+    },
+   
+    maxtime:{
+        type:String,
+        required:true
+    }, 
+    ingredients:{
         type:String,
         required:true
     },
@@ -15,8 +29,15 @@ const productSchema = new schema({
         required:true
     },
     description:String,
+    // image:{
+    //     type:schema.Types.ObjectId,
+    //     ref:Media
+    // },
     image:String,
-    category:String
+    preview:String,
+    category:String,
+    recipe:Array,
+    quantity:Number
 })
 
 module.exports = mongoose.model('product',productSchema)
