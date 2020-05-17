@@ -37,6 +37,10 @@ const cartSchema = new schema({
   delivered:{
     type:Boolean,
     required: true
+  },
+  printed:{
+    type:Boolean,
+    required: true
   }
 });
 

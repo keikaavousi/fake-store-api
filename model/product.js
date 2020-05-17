@@ -22,7 +22,7 @@ const productSchema = new schema({
     }, 
     ingredients:{
         type:String,
-        required:true
+        required:false
     },
     price:{
         type:Number,
