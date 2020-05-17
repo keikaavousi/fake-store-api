@@ -1,19 +1,25 @@
 const Cart = require("../model/cart");
+const Product = require("../model/product");
+const ZarinpalCheckout = require('zarinpal-checkout');
 
 module.exports.getAllCarts = (req, res) => {
-  const limit = Number(req.query.limit) || 0;
-  const sort = req.query.sort == "desc" ? -1 : 1;
-  const startDate = req.query.startdate || new Date("1970-1-1");
-  const endDate = req.query.enddate || new Date();
+  //const limit = Number(req.query.limit) || 0;
+ // const sort = req.query.sort == "desc" ? -1 : 1;
+ const startDate = req.query.startdate || new Date("1970-1-1");
+  //const endDate = req.query.enddate || new Date();
+  const completed = req.query.completed || true
   
 
   Cart.find({
-    date: { $gte: new Date(startDate), $lt: new Date(endDate) },
+     //date: { $gte: new Date(startDate), $lt: new Date(endDate) },
+    date: { $gte: new Date(startDate)},
+    completed:completed
   })
     .select()
-    .limit(limit)
-    .sort({ id: sort })
+    //.limit(limit)
+    .sort({ id: -1,printed:false })
     .then((carts) => {
+      console.log(carts)
       res.json(carts);
     })
     .catch((err) => console.log(err));
@@ -24,27 +30,45 @@ module.exports.getQuantity = (req,res) => {
   let date = new Date()
   let today = `${date.getFullYear()}-0${date.getMonth()+1}-${date.getDate()}`
   let lastMinutes = new Date(new Date().setMinutes(new Date().getMinutes()-10+270))
-console.log(lastMinutes)
+  let sold = 0;
+
+
+  id = req.params.id
+
 
     Cart.find({ 
       $or:[
         { 
         date: { $gte: today },
         completed:true,
-        "products.id":req.params.id
+        "products.id":id
       },
       { 
         date: { 
           $gte: lastMinutes
          },
         completed:false,
-        "products.id":req.params.id
+        "products.id":id
       }
     ]
      
     })
-    .then(cart=>res.json(cart))
+    
+    .then(cart=>{
+      cart.forEach(n=>{
+        n.products.forEach(l=>{
+          if(l.id==id){
+            sold+=l.quantity
+          }
+        })
+      })
+
+     Product.findById(id).then(product=>res.json(product.quantity-sold))
+    })
 }
+
+
+
 
 
 module.exports.getCartsbyUserid = (req, res) => {
@@ -66,10 +90,8 @@ module.exports.getCartsbyUserid = (req, res) => {
 
 module.exports.getSingleCart = (req, res) => {
   const id = req.params.id;
-  Cart.findOne({
-    id,
-  })
-    .select("-_id -products._id")
+  Cart.findById(id)
+    .select()
     .then((cart) => res.json(cart))
     .catch((err) => console.log(err));
 };
@@ -94,6 +116,7 @@ module.exports.addCart = (req, res) => {
         total: req.body.total,
         completed: req.body.completed,
         delivered: req.body.delivered,
+        printed: req.body.printed
       });
       cart
         .save()
@@ -138,6 +161,43 @@ module.exports.editCart = (req, res) => {
   //       })
 };
 
+
+module.exports.editCartCompleted = (req,res)=>{
+  Cart.updateOne(
+    {
+      _id: req.params.id,
+    },
+    {
+      $set: {
+        completed: req.body.completed,
+      },
+    }
+  )
+  .then((Cart) =>{
+    res.json(Cart)
+  })
+  .catch(err=>console.log(err))
+  }
+
+
+  module.exports.editCartPrinted = (req,res) => {
+    Cart.updateOne(
+      {
+        _id: req.params.id,
+      },
+      {
+        $set: {
+          printed: true,
+        },
+      }
+    )
+    .then((cart) =>{
+      console.log(cart)
+      res.json(cart)
+    })
+    .catch(err=>console.log(err))
+  }
+
 module.exports.deleteCart = (req, res) => {
   if (req.params.id == null) {
     res.json({
@@ -153,3 +213,24 @@ module.exports.deleteCart = (req, res) => {
       .catch((err) => console.log(err));
   }
 };
+
+
+module.exports.payment = (req,res) => {
+  console.log(req.params.id)
+  console.log(req.body)
+  var zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', true);
+  zarinpal.PaymentRequest({
+    Amount: req.body.total+'000',
+    CallbackURL: `http://localhost:3333/invoice?cart=${req.params.id}`,
+    Description: 'سفارش آنلاین آشپزخانه ویترین',
+    Email: req.body.email,
+    Mobile: req.body.tel
+  }).then(response => {
+    if (response.status === 100) {
+      //console.log(response.url);
+      res.json({url:response.url})
+    }
+  }).catch(err => {
+    console.error(err);
+  })
+}

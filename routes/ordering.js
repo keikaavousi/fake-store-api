@@ -10,4 +10,5 @@ router.get('/',ordering.getOrdering)
 
 router.put('/',ordering.updateOrdering)
 
+router.put('/disable/:id',ordering.disableOrdering)
 module.exports = router

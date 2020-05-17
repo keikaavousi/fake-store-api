@@ -31,7 +31,7 @@ module.exports.updateOrdering = (req,res) => {
       startTime: req.body.startTime,
       endTime:req.body.endTime,
       date:req.body.date,
-      enabled:req.body.enabled
+      enabled:true
     }
     Ordering.findByIdAndUpdate(id,editedOrdering, {new: true})
     .then(
@@ -42,4 +42,22 @@ module.exports.updateOrdering = (req,res) => {
     .catch(
       err => console.log(err)
     )
+}
+
+module.exports.disableOrdering = (req,res) =>{
+    Ordering.updateOne(
+        {
+          _id: req.params.id,
+        },
+        {
+          $set: {
+            enabled:false,
+          },
+        }
+      )
+      .then((ordering) =>{
+        console.log(ordering)
+        res.json(ordering)
+      })
+      .catch(err=>console.log(err))
 }
