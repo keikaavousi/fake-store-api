@@ -3,6 +3,7 @@ const schema = mongoose.Schema;
 const Product = require("./product");
 const User = require("./user");
 const Discount = require("./discount");
+const Shipping = require("./shipping")
 
 const cartSchema = new schema({
   id:{
@@ -65,6 +66,10 @@ const cartSchema = new schema({
     ref:Discount
     // type:String,
     // required:false
+  },
+  region:{
+    type: schema.Types.ObjectId,
+    ref:Shipping
   }
 });
 
