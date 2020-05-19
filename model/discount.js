@@ -18,10 +18,10 @@ const discountSchema = new schema({
         type:Boolean,
         required: true
     },
-    used:{
-        type:Number,
-        default:0
-    }
+    // used:{
+    //     type:Number,
+    //     default:0
+    // }
 });
 
 module.exports = mongoose.model('discount',discountSchema)
