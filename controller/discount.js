@@ -15,7 +15,7 @@ module.exports.getDiscountByTitle = (req,res) => {
     title:req.params.title
   })
   .then(dis => {
-    res.json(dis)
+    res.json({val:dis.discount})
   })
   .catch(err => console.log(err))
 }
