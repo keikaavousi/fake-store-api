@@ -117,7 +117,8 @@ module.exports.addCart = (req, res) => {
         total: req.body.total,
         completed: req.body.completed,
         delivered: req.body.delivered,
-        printed: req.body.printed
+        printed: req.body.printed,
+        region: req.body.region
       });
       cart
         .save()
@@ -140,7 +141,7 @@ module.exports.editCart = (req, res) => {
     {
       $set: {
         delivered: req.body.delivered,
-      },
+      }
     }
   )
   .then((cart) =>res.json(cart))
