@@ -2,6 +2,7 @@ const Cart = require("../model/cart");
 const Product = require("../model/product");
 const ZarinpalCheckout = require('zarinpal-checkout');
 
+
 module.exports.getAllCarts = (req, res) => {
   //const limit = Number(req.query.limit) || 0;
  // const sort = req.query.sort == "desc" ? -1 : 1;
@@ -118,7 +119,8 @@ module.exports.addCart = (req, res) => {
         completed: req.body.completed,
         delivered: req.body.delivered,
         printed: req.body.printed,
-        region: req.body.region
+        region: req.body.region,
+        discount: req.body.discount
       });
       cart
         .save()

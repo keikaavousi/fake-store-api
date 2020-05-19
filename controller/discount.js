@@ -1,4 +1,5 @@
 const Discount = require('../model/discount')
+const Cart = require('../model/cart')
 
 module.exports.getAllDiscount = (req, res) => {
   Discount.find().sort({
@@ -15,7 +16,19 @@ module.exports.getDiscountByTitle = (req,res) => {
     title:req.params.title
   })
   .then(dis => {
-    res.json({val:dis.discount})
+    if(dis.count!=0){
+      Cart.countDocuments({discount:dis._id,completed:true}, function(err, c) {
+        console.log(c,dis.count)
+        if(c<dis.count){
+          res.json({_id:dis._id,val:dis.discount})
+        }
+        else{
+          res.json({status:'finished'})
+        }
+   });
+  }else{
+    res.json({_id:dis._id,val:dis.discount})
+  }
   })
   .catch(err => console.log(err))
 }
@@ -53,7 +66,7 @@ module.exports.editDiscount = (req, res) => {
     discount:req.body.discount,
     count:req.body.count,
     enabled:req.body.enabled,
-    used:req.body.used,
+    // used:req.body.used,
   }
   Discount.findByIdAndUpdate(id,editedDiscount, {new: true})
   .then(dis => {
