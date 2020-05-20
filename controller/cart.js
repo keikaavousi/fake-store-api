@@ -93,6 +93,8 @@ module.exports.getCartsbyUserid = (req, res) => {
 module.exports.getSingleCart = (req, res) => {
   const id = req.params.id;
   Cart.findById(id)
+  .populate('discount','discount')
+  .populate('region','price')
     .select()
     .then((cart) => res.json(cart))
     .catch((err) => console.log(err));

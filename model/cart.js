@@ -63,9 +63,9 @@ const cartSchema = new schema({
   },
   discount:{
     type: schema.Types.ObjectId,
-    ref:Discount
+    ref:Discount,
     // type:String,
-    // required:false
+    required:false
   },
   region:{
     type: schema.Types.ObjectId,
