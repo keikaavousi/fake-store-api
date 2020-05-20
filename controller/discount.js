@@ -13,7 +13,8 @@ module.exports.getAllDiscount = (req, res) => {
 module.exports.getDiscountByTitle = (req,res) => {
   console.log(req.params.title)
   Discount.findOne({
-    title:req.params.title
+    title:req.params.title,
+    enabled:true
   })
   .then(dis => {
     if(dis.count!=0){
