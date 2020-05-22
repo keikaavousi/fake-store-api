@@ -26,6 +26,17 @@ module.exports.getProduct = (req, res) => {
     .catch(err=> console.log(err))
 }
 
+module.exports.getProductByTitle = (req,res) => {
+  const slug = req.params.slug
+
+  Product.findOne({slug:slug})
+  .select()
+    .then(product => {
+      res.json(product)
+    })
+    .catch(err=> console.log(err))
+}
+
 module.exports.getProductsInCategory = (req,res) => {
   const category = req.params.category
   Product.find({

@@ -4,7 +4,10 @@ const product = require('../controller/product')
 
 router.get('/',product.getAllProducts)
 router.get('/:id',product.getProduct)
+router.get('/slug/:slug',product.getProductByTitle)
 router.get('/category/:category',product.getProductsInCategory)
+
+
 router.post('/',product.addProduct)
 router.put('/:id',product.editProduct)
 router.put('/changePrice/:id',product.editProductPrice)
