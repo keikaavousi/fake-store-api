@@ -15,7 +15,8 @@ module.exports.getAllCarts = (req, res) => {
     date: { $gte: new Date(startDate)},
     completed:completed
   })
-  // .populate('products.id')
+  .populate('discount')
+  .populate('region','title')
   // .select('title')
     //.limit(limit)
     .sort({ id: -1,printed:false })

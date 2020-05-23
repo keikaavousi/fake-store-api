@@ -7,7 +7,7 @@ module.exports.paymentRequest = (req,res) => {
     console.log(req.params.id)
     console.log(req.body)
     zarinpal.PaymentRequest({
-      Amount: req.body.total+'000',
+      Amount: req.body.total*1000,
       CallbackURL: `http://localhost:3333/invoice?cart=${req.params.id}`,
       Description: 'سفارش آنلاین آشپزخانه ویترین',
       Email: req.body.email,
