@@ -17,5 +17,5 @@ router.patch('/:id',cart.editCart)
 router.delete('/:id',cart.deleteCart)
 
 
-router.post('/payment/:id',cart.payment)
+
 module.exports = router
