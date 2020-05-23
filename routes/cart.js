@@ -1,20 +1,21 @@
 const express = require('express')
 const router = express.Router()
 const cart = require('../controller/cart')
+const token = require('../controller/token')
 
-router.get('/',cart.getAllCarts)
+
+router.get('/',token.ensureToken,cart.getAllCarts)
 router.get('/:id',cart.getSingleCart)
-router.get('/user/:userid',cart.getCartsbyUserid)
-router.get('/quantity/:id',cart.getQuantity)
-router.post('/completed/:id',cart.editCartCompleted)
+//router.get('/quantity/:id',cart.getQuantity)
+router.post('/completed/:id',token.ensureToken,cart.editCartCompleted)
 
-router.put('/printed/:id',cart.editCartPrinted)
+router.put('/printed/:id',token.ensureToken,cart.editCartPrinted)
 
-router.post('/',cart.addCart)
+router.post('/',token.ensureToken,cart.addCart)
 
-router.put('/:id',cart.editCart)
-router.patch('/:id',cart.editCart)
-router.delete('/:id',cart.deleteCart)
+router.put('/:id',token.ensureToken,cart.editCart)
+router.patch('/:id',token.ensureToken,cart.editCart)
+router.delete('/:id',token.ensureToken,cart.deleteCart)
 
 
 
