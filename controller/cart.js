@@ -1,6 +1,5 @@
 const Cart = require("../model/cart");
 const Product = require("../model/product");
-const ZarinpalCheckout = require('zarinpal-checkout');
 
 
 module.exports.getAllCarts = (req, res) => {
@@ -220,23 +219,3 @@ module.exports.deleteCart = (req, res) => {
   }
 };
 
-
-module.exports.payment = (req,res) => {
-  console.log(req.params.id)
-  console.log(req.body)
-  var zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', true);
-  zarinpal.PaymentRequest({
-    Amount: req.body.total+'000',
-    CallbackURL: `http://localhost:3333/invoice?cart=${req.params.id}`,
-    Description: 'سفارش آنلاین آشپزخانه ویترین',
-    Email: req.body.email,
-    Mobile: req.body.tel
-  }).then(response => {
-    if (response.status === 100) {
-      //console.log(response.url);
-      res.json({url:response.url})
-    }
-  }).catch(err => {
-    console.error(err);
-  })
-}
