@@ -1,11 +1,6 @@
 const User = require("../model/user");
 const bcrypt = require("bcryptjs");
 
-module.exports.getUsers = (req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((err) => console.log(err));
-};
 
 module.exports.getUser = (req, res) => {
   const id = req.params.id;
