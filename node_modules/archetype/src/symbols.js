@@ -1,0 +1,1 @@
+exports.Any = Symbol.for('Archetype.Any');
