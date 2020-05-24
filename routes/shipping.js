@@ -7,9 +7,8 @@ const token = require('../controller/token')
 router.get('/',shipping.getAllShippings)
 router.get('/:id',shipping.getShipping)
 router.get('/check/:title',shipping.getShippingtByTitle)
-
+router.get('/checktitle/:title',token.ensureToken,shipping.checkDuplicate)
 router.post('/',token.ensureToken,shipping.addShipping)
-
 router.put('/:id',token.ensureToken,shipping.editShipping)
 router.put('/title/:id',token.ensureToken,shipping.editTitle)
 router.put('/price/:id',token.ensureToken,shipping.editPrice)

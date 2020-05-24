@@ -34,6 +34,21 @@ module.exports.getDiscountByTitle = (req,res) => {
   .catch(err => console.log(err))
 }
 
+
+module.exports.checkDuplicate = (req,res) => {
+  Discount.findOne({
+    title:req.params.title
+  })
+  .then(dis => {
+    if(dis){
+    res.json({status:'duplicate'})
+    }else{
+      res.json({status:'ok'})
+    }
+  })
+  .catch(err => console.log(err))
+}
+
 module.exports.getDiscount = (req, res) => {
   const id = req.params.id
 

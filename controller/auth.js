@@ -66,7 +66,7 @@ module.exports.login = (req, res) => {
         }
           if(rs){
             const token = jwt.sign({user:user.username},'secret_key')
-            res.cookie('authcookie',token,{maxAge:900000,httpOnly:true})
+            res.cookie('auth',token,{maxAge:900000,httpOnly:true})
               res.json({
                 token
               })

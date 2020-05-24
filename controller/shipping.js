@@ -31,7 +31,19 @@ module.exports.getShipping = (req, res) => {
     .catch(err => console.log(err))
 }
 
-
+module.exports.checkDuplicate = (req,res) => {
+  Shipping.findOne({
+    title:req.params.title
+  })
+  .then(ship => {
+    if(ship){
+    res.json({status:'duplicate'})
+    }else{
+      res.json({status:'ok'})
+    }
+  })
+  .catch(err => console.log(err))
+}
 
 module.exports.addShipping = (req, res) => {
   console.log(req.body)
