@@ -1,0 +1,92 @@
+.container{
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    // display: flex;
+    // flex-flow: row nowrap;
+    // justify-content: space-evenly;
+    @media #{$tablet}{
+        width: 100%;
+    }
+}
+.container-fluid{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    // display: flex;
+    // flex-flow: row nowrap;
+}
+.row{
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+}
+%col{
+    flex-grow: 1;
+    max-width: 100%;
+    padding: 15px;
+    min-height: 1px;
+    position: relative;
+}
+.col{
+    flex-basis: 0;
+    // border: 1px solid black;
+    @media #{$tablet}{
+       flex-basis: 100%;
+   }
+}
+
+@mixin colgrid(){
+    @for $i from 1 to 13 {
+     .col-#{$i}{
+        -ms-flex-preferred-size: percentage($i / 12);
+            max-width: percentage($i / 12);
+            flex-basis: percentage($i / 12);
+     }   
+    }
+    }
+    
+@include colgrid;
+
+ @mixin grid-generator($size) {
+	@for $i from 1 through 12 {
+		.col-#{$size}-#{$i} {
+            -ms-flex-preferred-size: percentage($i / 12);
+            max-width: percentage($i / 12);
+            flex-basis: percentage($i / 12);
+		}
+	}
+}
+
+@media #{$mobile}{
+@include grid-generator(xs);
+}
+@media #{$tablet}{
+@include grid-generator(sm);
+}
+@media #{$small-desktop}{
+@include grid-generator(md);
+}
+@media #{$desktop}{
+@include grid-generator(lg);
+}
+
+[class^="col"]{
+    @extend %col;
+}
+.wrap{
+    flex-wrap: wrap;
+}
+.flex-end{
+    justify-content: flex-end;
+}
+.flex-start{
+    justify-content: flex-start;
+}
+
