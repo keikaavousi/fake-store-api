@@ -1,0 +1,57 @@
+pre{
+    width: 100%;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+code{
+    width: 100%;
+    background-color: #f5f5f5;
+    padding:20px;
+    display: block;
+    line-height: 1.5;
+    font-size: 1.1em;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+code:empty{
+    padding: 0;
+}
+#try{
+    margin-top: 100px;
+    code{
+         overflow-x: auto;
+    }
+}
+.c-comment{
+    color: rgb(189, 189, 189);
+}
+.c-api{
+    color: $primary;
+
+}
+.code-area{
+    h2{
+        font-size: 1.7em;
+    }
+    h3{
+    margin-top: 50px;
+    @media screen and (max-width:480px){
+        margin-top: 30px;
+    }
+    font-size: 1.4em;
+    }
+}
+pre{
+    code{
+        overflow-x: auto;
+    }
+}
+.tips{
+    color: $secondary;
+}
+.output-result{
+    display: none;
+}
+.block{
+    display: block;
+}
