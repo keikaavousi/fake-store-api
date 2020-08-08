@@ -4,6 +4,7 @@ const app = require('../app')
 describe('testing user API',()=>{
     it('get all users',async()=>{
         const response = await supertest(app).get('/users')
+        
         expect(response.status).toBe(200)
         console.log(response.body)
         expect(response.body).not.toStrictEqual([]);
