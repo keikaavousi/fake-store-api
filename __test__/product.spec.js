@@ -17,7 +17,6 @@ describe("Testing products API", () => {
         expect(response.body).toHaveProperty('title')
     })
 
-
     it("get products in a category", async () => {
         const response = await supertest(app).get("/products/category/jewelery")
         expect(response.status).toBe(200)
