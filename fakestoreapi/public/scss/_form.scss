@@ -1,0 +1,80 @@
+%inputs{
+    &:focus{
+        border-color: $black;
+    }
+    border: none;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    font-size: 1em;
+}
+input{
+    height: 40px;
+    @extend %inputs;
+    width: 30%;
+}
+select{
+    height: 40px;
+    @extend %inputs;
+}
+textarea{
+    @extend %inputs;
+    width: 97%;
+}
+textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+    line-height:6;
+}
+textarea::-webkit-input-placeholder { /* Webkit */
+    line-height:6;
+}
+textarea:-ms-input-placeholder { /* IE */
+    line-height:6;
+}
+input[type="button"]{
+    @extend %inputs; 
+    cursor: pointer;
+}
+input[type="submit"]{
+    @extend %inputs; 
+    cursor: pointer;
+}
+button{
+    @extend %inputs; 
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+}
+::placeholder{
+    color: rgb(184, 183, 183)
+}
+input,button,textarea{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance:none;
+}
+.form-element{
+    position: relative;
+    margin: 30px auto;
+}
+.flt-label{
+    color: rgba(123,123,123,0.7);
+    position: absolute;
+    top:5px;
+    right:12px;
+    font-size: 0.9em;
+    cursor: text;
+}
+.flt-label-focus{
+    top:-15px;
+    padding: 2px;
+    background-color: #fff;
+    color: rgba(123,123,123,0.5);
+}
+.no-block{
+    width:unset;
+}
+.red{
+    color: red;
+}
+input[readonly]{
+    background-color: #ccc;
+}

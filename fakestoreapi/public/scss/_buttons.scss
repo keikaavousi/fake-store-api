@@ -1,0 +1,141 @@
+%btn{
+    padding: 9px 12px 6px;
+    border: none;
+    display: inline-flex;
+    border-radius: .25rem;
+    align-items: center;
+    // box-shadow: 0px 0px 9px 2px rgba(78, 77, 77, 0.2);
+    img{
+        margin-left: 8px;
+    }
+    margin-right: 10px;
+}
+@mixin btn($type,$color:$light) {
+    @extend %btn;
+    background-color: $type;
+    color: $color;
+    border:1px solid $type;
+    &:hover,
+    &:focus,
+    &:active{
+        opacity: 0.8;
+    }
+}
+.btn-success{
+   @include btn($success);
+}
+.btn-danger{
+    @include btn($danger);
+}
+.btn-warning{
+    @include btn($warning,$dark);
+}
+.btn-muted{
+    @include btn($muted,$dark);
+}
+.btn-primary{
+    @include btn($primary);
+}
+.btn-secondary{
+    @include btn($secondary);
+}
+.btn-black{
+    @include btn($black,$light);
+}
+.btn-yellow{
+    @include btn(var(--yellow),$light);
+}
+.btn-light{
+    @include btn($light,$primary);
+}
+.btn-rounded{
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+$colors: (
+    ('primary',$primary),
+    ('secondary',$secondary),
+    ('danger',$danger),
+    ('success',$success),
+    ('warning',$warning),
+    ('muted',$muted),
+    ('light',$light),
+    ('dark',$dark),
+    ('black',$black)
+);
+@mixin setcolor($color) {
+    color: #{$color};
+}
+@each $item in $colors {
+    .btn-bordered-#{nth($item, 1)}{
+        @include setcolor(nth($item, 2));
+        background-color: transparent;
+        @extend %btn;
+    }
+  }
+
+button[disabled]{
+    background-color:#ccc;
+    cursor: not-allowed;
+}
+.btn-circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding-top: 5px;
+    background-color: #fff;
+    border: none;
+    // box-shadow: 30px 30px 80px rgba(#3754aa,10%), -30px -30px 80px #ffffff, inset 4px 4px 20px rgba(#ffffff,50%);
+}
+.btn-icon{
+    margin-bottom: -7px;
+}
+.btn-icon-invert{
+    margin-bottom: -7px;
+    filter: invert(100%);
+}
+.btn-outline{
+    border: 1px solid $primary;
+    border-radius: .25rem;
+    padding: 9px 12px 6px;
+    background-color: transparent;
+    color: $primary;
+    .btn-icon{
+       position: relative;
+       left: -5px;
+    }
+    &:hover,&:focus,&:active{
+        background-color: $primary;
+        color: #fff;
+        .btn-icon{
+            filter:invert(100%)
+        }
+    }
+}
+
+.btn-triangle{
+    position: relative;
+    float: left;
+    margin-left: 6%;
+    margin-top: 2%;
+}
+.btn-triangle::after{
+    content: '';
+    width: 0; 
+    height: 0; 
+
+    border-radius: .25rem;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent; 
+    border-right:20px solid var(--yellow); 
+    
+    position: absolute;
+    left: -26px;
+    top: -3px;
+}
+.btn-large{
+    padding:16px 20px 12px
+}

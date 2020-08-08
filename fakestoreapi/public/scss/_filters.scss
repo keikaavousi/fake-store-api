@@ -1,0 +1,16 @@
+@mixin grayscale($val){
+    filter: grayscale($val);
+    -webkit-filter: grayscale($val);
+}
+.grayscale-max{
+    @include grayscale(100);
+}
+.grayscale-semi-max{
+    @include grayscale(80);
+}
+.grayscale-mid{
+    @include grayscale(50);
+}
+.grayscale-min{
+    @include grayscale(30);
+}
