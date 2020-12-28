@@ -23,6 +23,16 @@ module.exports.getProduct = (req, res) => {
     .catch(err=> console.log(err))
 }
 
+module.exports.getProductCategories = (req, res) => {
+  const id = req.params.id
+
+  Product.distinct("category")
+    .then(categories => {
+      res.json(categories);
+    })
+    .catch(err => console.log(err));
+}
+
 module.exports.getProductsInCategory = (req,res) => {
   const category = req.params.category
   const limit = Number(req.query.limit) || 0
