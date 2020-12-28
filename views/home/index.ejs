@@ -5,9 +5,10 @@
     <div class="col-md-6 intro">
         <h1>Fake Store API</h1>
         <p> Fake store rest API for your e-commerce or shopping website prototype</p>
-       <div class="btns">
-        <a class="btn btn-large btn-primary" target="_blank" rel="noopener noreferrer" href="https://github.com/keikaavousi/fake-store-api">View on GitHub <img src="/icons/github.svg"></a>
-        <a class="btn btn-large btn-secondary" href="/docs">Read Docs <img src="/icons/book.svg"></a>
+        <div class="btns">
+            <a class="btn btn-large btn-primary" target="_blank" rel="noopener noreferrer"
+                href="https://github.com/keikaavousi/fake-store-api">View on GitHub <img src="/icons/github.svg"></a>
+            <a class="btn btn-large btn-secondary" href="/docs">Read Docs <img src="/icons/book.svg"></a>
         </div>
     </div>
     <div class="col-md-6 intro-img">
@@ -21,7 +22,9 @@
     <h3 class="center-align col-md-12">Get tired of Lorem ipsum data?!</h3>
     <h3 class="center-align col-md-12">Didn't you find any free e-commerce API?!</h3>
     <p class="center-align">
-        fakeStoreApi is a free online REST API that you can use whenever you need Pseudo-real data for your e-commerce or shopping website without running any server-side code. It's awesome for teaching purposes, sample codes, tests, etc.
+        fakeStoreApi is a free online REST API that you can use whenever you need Pseudo-real data for your e-commerce
+        or shopping website without running any server-side code. It's awesome for teaching purposes, sample codes,
+        tests, etc.
     </p>
 </section>
 
@@ -47,9 +50,9 @@
         <li><a href="">/users</a>10 users</li>
     </ul>
     <a href="/docs" class="btn btn-primary">View Details on Docs</a>
- </section>
+</section>
 
- 
+
 <!--routes-->
 <section class="row">
     <h2 class="heading">Routes</h2>
@@ -57,6 +60,7 @@
     <ul class="list">
         <li><span>GET</span><a href="/products">/products</a></li>
         <li><span>GET</span><a href="/products/1">/products/1</a></li>
+        <li><span>GET</span><a href="/products/categories">/products/categories</a></li>
         <li><span>GET</span><a href="/products/category/jewelery">/products/category/jewelery</a></li>
         <li><span>GET</span><a href="/cart?userId=1">/cart?userId=1</a></li>
         <li><span>GET</span><a href="/products?limit=5">/products?limit=5</a></li>
@@ -66,22 +70,20 @@
         <li><span>DELETE</span>/products/1</li>
     </ul>
     <a href="/docs" class="btn btn-primary">View Details on Docs</a>
- </section>
+</section>
 
- <script>
-     let wrapper = document.querySelector('#result code')
-     let loading = document.createElement('span')
-     loading.className="loading"
- 
-     document.getElementById("fetch_btn").addEventListener('click',function(){
-         wrapper.appendChild(loading)
-         fetch('https://fakestoreapi.com/products/1')
-             .then(res=>res.json())
-             .then(json=>{
-                 wrapper.textContent=JSON.stringify(json,undefined,2)
-             })
-     })
- 
-     
- </script>
+<script>
+    let wrapper = document.querySelector('#result code')
+    let loading = document.createElement('span')
+    loading.className = "loading"
+
+    document.getElementById("fetch_btn").addEventListener('click', function () {
+        wrapper.appendChild(loading)
+        fetch('https://fakestoreapi.com/products/1')
+            .then(res => res.json())
+            .then(json => {
+                wrapper.textContent = JSON.stringify(json, undefined, 2)
+            })
+    })
+</script>
 <%- include ("../shared/footer.ejs") %>
