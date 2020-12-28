@@ -1,11 +1,19 @@
         <h2 class="heading" id="products">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-box">
+                <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
             Products</h2>
         <h3 id="p-all">Get all products</h3>
         <pre><code>fetch(<span class="c-api">'https://fakestoreapi.com/products'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <button class="show-output btn btn-outline">Show output</button>
+        <button class="show-output btn btn-outline">Show output</button>
         <pre class="output-result"><code>
             <span class="c-comment">//output</span>
             [
@@ -34,7 +42,7 @@
         <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/1'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <button class="show-output btn btn-outline">Show output</button>
+        <button class="show-output btn btn-outline">Show output</button>
         <pre class="output-result"><code>
             <span class="c-comment">//output</span>
             {
@@ -53,7 +61,7 @@
         <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products?limit=5'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <button class="show-output btn btn-outline">Show output</button>
+        <button class="show-output btn btn-outline">Show output</button>
         <pre class="output-result"><code>
             <span class="c-comment">//output</span>
         [
@@ -83,12 +91,16 @@
         <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products?sort=desc'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <p>
-                <span class="tips">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </span>Default value is in ascending mode, you can use with 'desc' or 'asc' as you want.
-            </p>
-            <button class="show-output btn btn-outline">Show output</button>
+        <p>
+            <span class="tips">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-zap">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </span>Default value is in ascending mode, you can use with 'desc' or 'asc' as you want.
+        </p>
+        <button class="show-output btn btn-outline">Show output</button>
         <pre class="output-result"><code>
             <span class="c-comment">//output</span>
         [
@@ -114,17 +126,37 @@
 
 
 
+        <h3 id="p-single">Get all categories</h3>
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/categories'</span>)
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+        <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+            [
+            "electronics",
+            "jewelery",
+            "men clothing",
+            "women clothing"
+            ]
+        </code></pre>
+
+
 
         <h3 id="p-category">Get products in a specific category</h3>
         <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/category/jewelery'</span>)
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <p>
-                <span class="tips">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </span>You can also use limit(Number) and sort(asc|desc) as a query string to get your ideal results
-            </p>
-            <button class="show-output btn btn-outline">Show output</button>
+        <p>
+            <span class="tips">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-zap">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </span>You can also use limit(Number) and sort(asc|desc) as a query string to get your ideal results
+        </p>
+        <button class="show-output btn btn-outline">Show output</button>
         <pre class="output-result"><code>
             <span class="c-comment">//output</span>
         [
@@ -147,7 +179,7 @@
             }
         ]
         </code></pre>
-        
+
 
 
         <h3 id="p-new">Add new product</h3>
@@ -165,13 +197,18 @@
         })
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <p>
-                <span class="tips">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </span>
-                If you send an object like the code above, it will return you an object with a new id. remember that nothing in real will insert into the database. so if you want to access the new id you will get a 404 error.
-            </p>
-            <button class="show-output btn btn-outline">Show output</button>
+        <p>
+            <span class="tips">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-zap">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </span>
+            If you send an object like the code above, it will return you an object with a new id. remember that nothing
+            in real will insert into the database. so if you want to access the new id you will get a 404 error.
+        </p>
+        <button class="show-output btn btn-outline">Show output</button>
         <pre class="output-result"><code>
             <span class="c-comment">//output</span>
             {
@@ -201,7 +238,7 @@
         })
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/7'</span>,{
+        <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/7'</span>,{
                 method:"PATCH",
                 body:JSON.stringify(
                     {
@@ -215,13 +252,17 @@
             })
                 .then(res=>res.json())
                 .then(json=>console.log(json))</code></pre>
-            <p>
-                <span class="tips">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </span>It will return you an object with sent id.
-                remember that nothing in real will update in the database.
-            </p>
-            <button class="show-output btn btn-outline">Show output</button>
+        <p>
+            <span class="tips">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-zap">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </span>It will return you an object with sent id.
+            remember that nothing in real will update in the database.
+        </p>
+        <button class="show-output btn btn-outline">Show output</button>
         <pre class="output-result"><code>
             <span class="c-comment">//output</span>
             {
@@ -242,12 +283,17 @@
         })
             .then(res=>res.json())
             .then(json=>console.log(json))</code></pre>
-            <p>
-                <span class="tips">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </span>The product will not be deleted on the database. but if you sent data successfully it will return you the fake deleted product.
-            </p>
-            <button class="show-output btn btn-outline">Show output</button>
+        <p>
+            <span class="tips">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-zap">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </span>The product will not be deleted on the database. but if you sent data successfully it will return you
+            the fake deleted product.
+        </p>
+        <button class="show-output btn btn-outline">Show output</button>
         <pre class="output-result"><code>
             <span class="c-comment">//output</span>
             {
