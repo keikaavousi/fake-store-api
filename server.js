@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 //port
-const port = 6400;
+const port = 3000;
 
 //routes
 const productRoute = require("./routes/product");
@@ -46,7 +46,7 @@ mongoose
     { useNewUrlParser: true }
   )
   .then((result) => {
-    app.listen(process.env.PORT || port, () => {
+    app.listen(port, () => {
       console.log("connect");
     });
   })
