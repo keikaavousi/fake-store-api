@@ -46,7 +46,7 @@ mongoose
     { useNewUrlParser: true }
   )
   .then((result) => {
-    app.listen(port, () => {
+    app.listen(process.env.PORT || port, () => {
       console.log("connect");
     });
   })
