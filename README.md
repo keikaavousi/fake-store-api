@@ -14,11 +14,13 @@ so I decided to create this simple web service whit NodeJs(express) and MongoDB 
 
 ## Resources
 
-There are 3 main resources need in shopping prototypes:
+There are 4 main resources need in shopping prototypes:
 
+### new! Login with token has beed added to FakeStoreApi!
 - Products https://fakestoreapi.com/products
 - Carts https://fakestoreapi.com/carts
 - Users https://fakestoreapi.com/users
+- Login Token https://fakestoreapi.com/auth/login
 
 ## How to
 you can fetch data with any kind of methods you know(fetch API, Axios, jquery ajax,...)
@@ -256,6 +258,16 @@ DELETE:
  
 
 
+### Auth
+```js
+fields: 
+{
+    username:String,
+    password:String
+}
+```
+POST:
+- /auth/login 
 
 
 ## ToDo
