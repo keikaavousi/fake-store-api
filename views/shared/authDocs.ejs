@@ -1,0 +1,37 @@
+        <h2 class="heading margin-top-md" id="auth">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-user">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            Login</h2>
+        <h3 id="a-login">User login</h3>
+        <pre><code>fetch(<span class="c-api">'https://fakestoreapi.com/auth/login'</span>,{
+            method:'POST',
+            body:JSON.stringify({
+                username: "mor_2314",
+                password: "83r5^_"
+            })
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+        <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+        {
+            token: "eyJhbGciOiJIUzI1NiIsInR"
+        }
+        </code></pre>
+
+        <p>
+            <span class="tips">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-zap">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </span>
+            You can use any of the users' username and password available in users API to get token.
+            any other usernames return error.
+        </p>
