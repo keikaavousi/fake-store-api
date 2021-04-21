@@ -29,11 +29,6 @@ app.set("views", "views");
 
 app.disable("view cache");
 
-// app.use('/',(req,res)=>{
-//     res.json({
-//         'hi':'hi'
-//     })
-// })
 app.use("/", homeRoute);
 app.use("/products", productRoute);
 app.use("/carts", cartRoute);
@@ -54,8 +49,3 @@ mongoose
   });
 
 module.exports = app;
-//listen
-
-// app.listen(process.env.PORT || port , ()=>{
-//     console.log(`app is listening on post ${port}!`)
-// })
