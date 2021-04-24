@@ -15,6 +15,7 @@ module.exports.login = (req, res) => {
             msg: "username or password is incorrect",
           });
         } else {
+          console.log(user);
           res.json({
             token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
           });
