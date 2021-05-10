@@ -3,7 +3,8 @@
 <footer>
     <p>Made with <span class="heart">&hearts;</span> by <a target="_blank" rel="noopener noreferrer"
             href="https://keikaavousi.com">MohammadReza Keikavousi</a></p>
-    <a href="https://zarinp.al/@keikaavousi" class="donate" rel="noopener noreferrer">
+    <a href="https://link.trustwallet.com/send?asset=c0&address=bc1qgd592xx6getwhws2fpyhr84x64d26cn6ykqa8y"
+        class="donate" rel="noopener noreferrer">
         <img src='/icons/coffee.svg' />
         Buy me a coffee</a>
 </footer>
@@ -22,7 +23,7 @@
     })
 </script>
 <script>
-   // let targetAnchor = document.getElementById("try")
+    // let targetAnchor = document.getElementById("try")
 
     let links = document.querySelectorAll("a[href*='#']")
 
@@ -32,7 +33,7 @@
 
             let hash = links[i].hash
             let targetAnchor = document.querySelector(hash)
-            console.log(hash,targetAnchor.offsetTop,window.scrollY)
+            console.log(hash, targetAnchor.offsetTop, window.scrollY)
 
             window.scrollTo({
                 top: targetAnchor.offsetTop + 620,
