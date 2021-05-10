@@ -16,7 +16,7 @@ so I decided to create this simple web service whit NodeJs(express) and MongoDB 
 
 There are 4 main resources need in shopping prototypes:
 
-### new! Login with token has beed added to FakeStoreApi!
+### new! Login with token has been added to FakeStoreApi!
 - Products https://fakestoreapi.com/products
 - Carts https://fakestoreapi.com/carts
 - Users https://fakestoreapi.com/users
