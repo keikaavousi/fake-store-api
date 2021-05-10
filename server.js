@@ -38,7 +38,10 @@ app.use("/auth", authRoute);
 //mongoose
 mongoose.set("useFindAndModify", false);
 mongoose
-  .connect("database credential", { useNewUrlParser: true })
+  .connect(
+    "mongodb+srv://keikaavousi:DZpYnmSicavx5dEy@cluster0-ffwd2.mongodb.net/shop?retryWrites=true&w=majority",
+    { useNewUrlParser: true }
+  )
   .then((result) => {
     app.listen(process.env.PORT || port, () => {
       console.log("connect");
