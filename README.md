@@ -10,7 +10,7 @@ You can visit in detail docs in [FakeStoreAPI](https://fakestoreapi.com) for mor
 When I wanted to design a shopping website prototype and needed fake data, I had to
 use lorem ipsum data or create a JSON file from the base. I didn't find any online free web service
 to return semi-real shop data instead of lorem ipsum data.
-so I decided to create this simple web service whit NodeJs(express) and MongoDB as a database.
+so I decided to create this simple web service with NodeJs(express) and MongoDB as a database.
 
 ## Resources
 
