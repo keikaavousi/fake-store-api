@@ -33,11 +33,42 @@
 
         gtag('config', 'UA-160318377-2');
     </script>
+    <style>
+        .alert {
+            width: 100%;
+            padding: 15px;
+            background-color: #802c6e;
+            color: #fff;
+            text-align: center;
+        }
 
+        .alert a {
+            color: #fff;
+            border-bottom: 1px dashed #fff;
+            padding-bottom: 1px;
+        }
+
+        .close-alert {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: #fff;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 2em
+        }
+    </style>
 
 </head>
 
 <body>
+    <div class="alert" id="donate_alert">
+        FakeStoreAPI is free and always will be free! if you love FakeStoreAPI <a href="https://donate.keikaavousi.com"
+            target="_blank">donate</a> to help maintain this project
+        &hearts;
+        <button class="close-alert" id="close_alert">&times;</button>
+    </div>
     <div class="container">
         <nav>
             <button id="menu-icon">

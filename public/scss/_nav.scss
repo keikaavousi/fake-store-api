@@ -1,9 +1,14 @@
-nav{
+nav {
     background-color: transparent;
     padding: 10px;
-    #menu-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    #menu-icon {
         display: none;
-        @media only screen and (max-width:768px){
+
+        @media only screen and (max-width:768px) {
             position: absolute;
             right: 20px;
             top: 20px;
@@ -15,59 +20,68 @@ nav{
             height: 40px;
             padding: 10px;
             z-index: 100;
-            &.open{
-                span{
-                    &:first-child{
-                          transform:rotate(-45deg) translate(-5px,5px)
+
+            &.open {
+                span {
+                    &:first-child {
+                        transform: rotate(-45deg) translate(-5px, 5px)
                     }
-                    &:last-child{
-                        transform:rotate(45deg)
-                  }
+
+                    &:last-child {
+                        transform: rotate(45deg)
+                    }
                 }
             }
         }
-        span{
+
+        span {
             display: block;
-            width:100%;
+            width: 100%;
             border-bottom: 2px solid #333;
             margin-bottom: 5px;
         }
     }
-    ul{
+
+    ul {
         display: flex;
         justify-content: flex-end;
         position: relative;
-       
-        @media only screen and (max-width:480px){
+
+        @media only screen and (max-width:480px) {
             position: fixed;
             right: -100%;
             top: 0;
             bottom: 0;
-            z-index:99;
+            z-index: 99;
             height: 100vh;
             width: 100%;
             background-color: #fff;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            &.open{
+
+            &.open {
                 right: 0;
             }
         }
-        li{
+
+        li {
             margin: 30px;
-            @media only screen and (max-width:480px){
+
+            @media only screen and (max-width:480px) {
                 margin-bottom: 20px;
             }
-            a{
+
+            a {
                 text-decoration: none;
                 color: rgb(110, 110, 110);
                 font-size: 0.9em;
-                &:hover{
+
+                &:hover {
                     color: initial;
                 }
             }
         }
-       
+
     }
 }
