@@ -1,10 +1,11 @@
 //initializes
-const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
-const cors = require("cors");
 const mongoose = require("mongoose");
+const express = require("express");
+const cors = require("cors");
 const path = require("path");
+
+//app
+const app = express();
 
 //port
 const port = 6400;
@@ -20,8 +21,8 @@ const authRoute = require("./routes/auth");
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, "/public")));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //view engine
 app.set("view engine", "ejs");
@@ -37,9 +38,10 @@ app.use("/auth", authRoute);
 
 //mongoose
 mongoose.set("useFindAndModify", false);
+mongoose.set("useUnifiedTopology", true);
 mongoose
   .connect("database credential", { useNewUrlParser: true })
-  .then((result) => {
+  .then(() => {
     app.listen(process.env.PORT || port, () => {
       console.log("connect");
     });
