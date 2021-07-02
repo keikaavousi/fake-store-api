@@ -2,7 +2,7 @@
   "name": "api",
   "version": "1.0.0",
   "description": "FakeStoreAPI is a free online REST API that provides you fake e-commerce JSON data",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest",
     "start": "node server.js"
