@@ -38,6 +38,35 @@
         </code></pre>
 
 
+        <h3 id="p-search">Search all products</h3>
+        <pre><code>fetch(<span class="c-api">'https://fakestoreapi.com/products/search?q=cotton'</span>)
+            .then(res=>res.json())
+            .then(json=>console.log(json))</code></pre>
+        <button class="show-output btn btn-outline">Show output</button>
+        <pre class="output-result"><code>
+            <span class="c-comment">//output</span>
+            [
+                {
+                    id:1,
+                    title:'...',
+                    price:'...',
+                    category:'...',
+                    description:'...',
+                    image:'...'
+                },
+                <span class="c-comment">/*...*/</span>
+                {
+                    id:30,
+                    title:'...',
+                    price:'...',
+                    category:'...',
+                    description:'...',
+                    image:'...'
+                }
+            ]
+        </code></pre>
+
+
         <h3 id="p-single">Get a single product</h3>
         <pre><code>fetch('<span class="c-api">https://fakestoreapi.com/products/1'</span>)
             .then(res=>res.json())
