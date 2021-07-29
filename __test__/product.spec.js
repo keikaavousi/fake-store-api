@@ -9,6 +9,13 @@ describe("Testing products API", () => {
         expect(response.body).not.toStrictEqual([])
     })
 
+    it("search products", async () => {
+        const response = await supertest(app).get("/products/search?q=cotton")
+        expect(response.status).toBe(200)
+        console.log('get', response.body)
+        expect(response.body).not.toStrictEqual([])
+    })
+
     it("get a single product", async () => {
         const response = await supertest(app).get("/products/1")
         expect(response.status).toBe(200)
