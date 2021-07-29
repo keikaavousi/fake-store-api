@@ -14,6 +14,26 @@ module.exports.getAllProducts = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+module.exports.searchProducts = async (req, res) => {
+  const query = req.query.q;
+  const limit = Number(req.query.limit) || 0;
+  const sort = req.query.sort == "desc" ? -1 : 1;
+
+  Product.find({
+    $or: [
+      { "title": { $regex: query, $options: 'i' } },
+      { "description": { $regex: query, $options: 'i' } },
+    ]
+  })
+    .select(['-_id'])
+    .limit(limit)
+    .sort({ id: sort })
+    .then((products) => {
+      res.json(products);
+    })
+    .catch((err) => console.log(err));
+};
+
 module.exports.getProduct = (req, res) => {
   const id = req.params.id;
 
