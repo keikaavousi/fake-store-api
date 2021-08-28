@@ -22,7 +22,7 @@ There are 4 main resources need in shopping prototypes:
 - Users https://fakestoreapi.com/users
 - Login Token https://fakestoreapi.com/auth/login
 
-### new! "Rating" (includes rate (double number) and count (int number)) has been added to each product object!
+### New! "Rating" (includes rate and count) has been added to each product object!
 
 ## How to
 
