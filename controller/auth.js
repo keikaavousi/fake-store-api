@@ -6,19 +6,23 @@ module.exports.login = (req, res) => {
 
 	if (username && password) {
 		User.findOne({
-			username,
-			password,
+			username: username,
+			password: password,
 		})
-			.then(() => {
-				res.json({
-					token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-				});
+			.then((user) => {
+				if (user) {
+					res.json({
+						token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+					});
+				} else {
+					res.status(401).json({
+						status: 'Error',
+						msg: 'username or password is incorrect',
+					});
+				}
 			})
-			.catch(() => {
-				res.status(401).json({
-					status: 'Error',
-					msg: 'username or password is incorrect',
-				});
+			.catch((err) => {
+				console.error(err);
 			});
 	}
 };
