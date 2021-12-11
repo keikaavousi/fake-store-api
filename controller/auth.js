@@ -9,20 +9,16 @@ module.exports.login = (req, res) => {
 			username,
 			password,
 		})
-			.then((user) => {
-				if (!user) {
-					res.status(401).json({
-						status: 'Error',
-						msg: 'username or password is incorrect',
-					});
-				} else {
-					res.json({
-						token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-					});
-				}
+			.then(() => {
+				res.json({
+					token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+				});
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
+				res.status(401).json({
+					status: 'Error',
+					msg: 'username or password is incorrect',
+				});
 			});
 	}
 };
