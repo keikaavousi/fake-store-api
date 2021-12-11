@@ -3,7 +3,6 @@ const User = require('../model/user');
 module.exports.login = (req, res) => {
 	const username = req.body.username;
 	const password = req.body.password;
-
 	if (username && password) {
 		User.findOne({
 			username: username,
