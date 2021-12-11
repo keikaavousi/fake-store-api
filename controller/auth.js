@@ -12,7 +12,7 @@ module.exports.login = (req, res) => {
 			.then((user) => {
 				if (user) {
 					res.json({
-						token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+						token: 'eyJr389hbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
 					});
 				} else {
 					res.status(401).json({
