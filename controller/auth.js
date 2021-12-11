@@ -15,10 +15,8 @@ module.exports.login = (req, res) => {
 						token: 'eyJr389hbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
 					});
 				} else {
-					res.status(401).json({
-						status: 'Error',
-						msg: 'username or password is incorrect',
-					});
+					res.status(401);
+					res.send('username or password is incorrect');
 				}
 			})
 			.catch((err) => {
