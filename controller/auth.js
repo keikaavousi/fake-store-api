@@ -7,6 +7,7 @@ module.exports.login = (req, res) => {
 	if (username && password) {
 		User.findOne({
 			username,
+			password,
 		})
 			.then((user) => {
 				if (!user) {
