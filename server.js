@@ -3,12 +3,16 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const dotenv = require("dotenv");
+const dotenvExpand = require("dotenv-expand");
+const myEnv = dotenv.config();
+dotenvExpand.expand(myEnv);
 
 //app
 const app = express();
 
 //port
-const port = 6400;
+const port = process.env.PORT || 6400;
 
 //routes
 const productRoute = require("./routes/product");
@@ -40,9 +44,9 @@ app.use("/auth", authRoute);
 mongoose.set("useFindAndModify", false);
 mongoose.set("useUnifiedTopology", true);
 mongoose
-  .connect("database credential", { useNewUrlParser: true })
+  .connect(process.env.DATABASE_URL, { useNewUrlParser: true })
   .then(() => {
-    app.listen(process.env.PORT || port, () => {
+    app.listen(port, () => {
       console.log("connect");
     });
   })
