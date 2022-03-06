@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - db
+  db:
+    image: mongo
+    restart: always
+    volumes:
+      - ./mongo_data:/data/db
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME?MongoDB username}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD?MongoDB password}
