@@ -1,0 +1,7 @@
+.env
+.git
+.vscode
+.*ignore
+docker-compose*.yml
+node_modules
+*.md
