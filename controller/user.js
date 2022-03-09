@@ -82,7 +82,7 @@ module.exports.editUser = (req, res) => {
 		});
 	} else {
 		res.json({
-			id: req.params.id,
+			id: parseInt(req.params.id),
 			email: req.body.email,
 			username: req.body.username,
 			password: req.body.password,

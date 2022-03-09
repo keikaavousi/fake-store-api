@@ -89,7 +89,7 @@ module.exports.editProduct = (req, res) => {
 		});
 	} else {
 		res.json({
-			id: req.params.id,
+			id: parseInt(req.params.id),
 			title: req.body.title,
 			price: req.body.price,
 			description: req.body.description,

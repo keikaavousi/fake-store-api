@@ -85,7 +85,7 @@ module.exports.editCart = (req, res) => {
 		});
 	} else {
 		res.json({
-			id: req.params.id,
+			id: parseInt(req.params.id),
 			userId: req.body.userId,
 			date: req.body.date,
 			products: req.body.products,
