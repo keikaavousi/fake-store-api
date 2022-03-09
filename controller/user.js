@@ -82,7 +82,7 @@ module.exports.editUser = (req, res) => {
 		});
 	} else {
 		res.json({
-			id: req.params.id,
+			id: parseInt(req.params.id),
 			email: req.body.email,
 			username: req.body.username,
 			password: req.body.password,
@@ -96,8 +96,8 @@ module.exports.editUser = (req, res) => {
 				number: req.body.number,
 				zipcode: req.body.zipcode,
 				geolocation: {
-					lat: req.body.address.geolocation.lat,
-					long: req.body.address.geolocation.long,
+					lat: req.body.geolocation.lat,
+					long: req.body.geolocation.long,
 				},
 			},
 			phone: req.body.phone,
