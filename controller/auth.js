@@ -1,4 +1,5 @@
 const User = require('../model/user');
+const jwt = require('jsonwebtoken');
 
 module.exports.login = (req, res) => {
 	const username = req.body.username;
@@ -11,7 +12,7 @@ module.exports.login = (req, res) => {
 			.then((user) => {
 				if (user) {
 					res.json({
-						token: 'eyJr389hbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+						token: jwt.sign({ user: username }, 'secret_key'),
 					});
 				} else {
 					res.status(401);
