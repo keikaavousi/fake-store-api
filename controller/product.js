@@ -82,20 +82,31 @@ module.exports.addProduct = (req, res) => {
 };
 
 module.exports.editProduct = (req, res) => {
+	const productId = req.params.id;
 	if (typeof req.body == undefined || req.params.id == null) {
 		res.json({
 			status: 'error',
 			message: 'something went wrong! check your sent data',
 		});
 	} else {
-		res.json({
-			id: parseInt(req.params.id),
-			title: req.body.title,
-			price: req.body.price,
-			description: req.body.description,
-			image: req.body.image,
-			category: req.body.category,
-		});
+
+		const updatedProduct = {
+		title: req.body.title,
+		price: req.body.price,
+		description: req.body.description,
+		image: req.body.image,
+		category: req.body.category
+		}
+
+		Product.updateOne({id:productId},updatedProduct)
+				.then(()=>{
+					res.status(200).json({message:"Product Updated."})
+				})
+				.catch((err)=>{
+					res.status(409).json({message :"Failed! Reason : "+err.message});
+				})
+
+		
 	}
 };
 
@@ -106,13 +117,14 @@ module.exports.deleteProduct = (req, res) => {
 			message: 'cart id should be provided',
 		});
 	} else {
-		Product.findOne({
+
+		Product.deleteOne({
 			id: req.params.id,
 		})
 			.select(['-_id'])
 			.then((product) => {
-				res.json(product);
+				res.json({message:"Product deleted"});
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => res.json({menubar:"Failed! Reason : "+err.message}));
 	}
 };
