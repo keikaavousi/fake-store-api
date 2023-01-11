@@ -4,11 +4,15 @@ const schema = mongoose.Schema
 const userSchema = new schema({
     id:{
         type:Number,
-        required:true
+        required:true,
+        unique: true,
+        index: true
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique: true,
+        index: true
     },
     username:{
         type:String,
@@ -41,4 +45,8 @@ const userSchema = new schema({
     phone:String
 })
 
+userSchema.indexes([
+    [ { id: 1 }, { unique: true, background: true } ],
+    [ { email: 1 }, { unique: true, background: true } ],
+])
 module.exports = mongoose.model('user',userSchema)

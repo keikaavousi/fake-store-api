@@ -6,7 +6,9 @@ const User = require('./user')
 const cartSchema = new schema({
     id:{
         type:Number,
-        required:true
+        required:true,
+        unique: true,
+        index: true
     },
     userId:{
         type:schema.Types.Number,
