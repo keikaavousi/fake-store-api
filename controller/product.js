@@ -1,17 +1,19 @@
 const Product = require('../model/product');
 
 module.exports.getAllProducts = (req, res) => {
-	const limit = Number(req.query.limit) || 0;
+	const limit = Number(req.query.limit) || 10;
 	const sort = req.query.sort == 'desc' ? -1 : 1;
-
-	Product.find()
-		.select(['-_id'])
-		.limit(limit)
-		.sort({ id: sort })
-		.then((products) => {
-			res.json(products);
-		})
-		.catch((err) => console.log(err));
+	
+	Product.paginate({},{
+		select:['-_id'],
+		limit: limit,
+		lean: true,
+		sort: { id: sort }
+	})
+	.then((products) => {
+		res.json(products);
+	})
+	.catch((err) => console.log(err))
 };
 
 module.exports.getProduct = (req, res) => {
@@ -59,25 +61,24 @@ module.exports.addProduct = (req, res) => {
 			message: 'data is undefined',
 		});
 	} else {
-		// let productCount = 0;
-		// Product.find()
-		//   .countDocuments(function (err, count) {
-		//     productCount = count;
-		//   })
-		//   .then(() => {
-		const product = {
-			id: 21,
-			title: req.body.title,
-			price: req.body.price,
-			description: req.body.description,
-			image: req.body.image,
-			category: req.body.category,
-		};
-		// product.save()
-		//   .then(product => res.json(product))
-		//   .catch(err => console.log(err))
-		res.json(product);
-		// });
+		let productCount = 0;
+		Product.find()
+		  .countDocuments(function (err, count) {
+		    productCount = count == 0 ? 1 : count + 1
+		  })
+		  .then(() => {
+			const product = new Product({
+					id: productCount,
+					title: req.body.title,
+					price: req.body.price,
+					description: req.body.description,
+					image: req.body.image,
+					category: req.body.category,
+				});
+			product.save()
+			.then(product => res.json(product))
+			.catch(err => console.log(err))
+		});
 	}
 };
 
