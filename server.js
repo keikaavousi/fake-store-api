@@ -12,7 +12,7 @@ dotenvExpand.expand(myEnv);
 const app = express();
 
 //port
-const port = process.env.PORT || 6400;
+const port = process.env.PORT || 8000;
 
 //routes
 const productRoute = require('./routes/product');
