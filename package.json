@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,8 @@
     "dotenv": "^16.0.0",
     "dotenv-expand": "^8.0.1",
     "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.6"
   },
