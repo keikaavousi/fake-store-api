@@ -1,20 +1,9 @@
 const mongoose = require("mongoose");
 
-//mongoose
-// mongoose.set("useFindAndModify", false);
-// mongoose.set("useUnifiedTopology", true);
-// mongoose
-//   .connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-//   .then(() => {
-//     app.listen(port, () => {
-//       console.log("connect");
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+// @todo - remove this
+const uri = "mongodb://0.0.0.0:27017/fake-store" || process.env.DATABASE_URL;
 
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(uri, {
   useFindAndModify: false,
   useUnifiedTopology: true,
   useNewUrlParser: true,

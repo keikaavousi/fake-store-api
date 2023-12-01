@@ -6,7 +6,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 const dotenvExpand = require("dotenv-expand");
 const schema = require("./graphql/Schema");
-const resolvers = require("./graphql/Resolvers");
+const { resolvers, DateResolver } = require("./graphql/Resolvers");
 const myEnv = dotenv.config();
 dotenvExpand.expand(myEnv);
 require("./db/connection");
@@ -32,10 +32,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(
-  "/",
+  "/graphiql",
   graphqlHTTP({
     schema,
-    rootValue: resolvers,
+    rootValue: {
+      Date: DateResolver,
+      ...resolvers,
+    },
     graphiql: true,
   })
 );
@@ -51,5 +54,9 @@ app.use("/products", productRoute);
 app.use("/carts", cartRoute);
 app.use("/users", userRoute);
 app.use("/auth", authRoute);
+
+app.listen(() => {
+  console.log(`listening on port: localhost:${port}`);
+});
 
 module.exports = app;
