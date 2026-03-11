@@ -1,0 +1,12 @@
+$kind: http-request
+name: Get All Products
+method: GET
+url: '{{baseUrl}}/products'
+order: 1000
+queryParams:
+  - key: limit
+    value: '5'
+    disabled: true
+  - key: sort
+    value: desc
+    disabled: true

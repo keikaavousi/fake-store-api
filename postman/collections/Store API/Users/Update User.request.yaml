@@ -1,0 +1,31 @@
+$kind: http-request
+name: Update User
+method: PUT
+url: '{{baseUrl}}/users/1'
+order: 4000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "updated@example.com",
+      "username": "johndoe",
+      "password": "newpassword",
+      "name": {
+        "firstname": "John",
+        "lastname": "Smith"
+      },
+      "address": {
+        "city": "New York",
+        "street": "Broadway",
+        "number": 456,
+        "zipcode": "10001",
+        "geolocation": {
+          "lat": "40.7128",
+          "long": "-74.0060"
+        }
+      },
+      "phone": "1-555-987-6543"
+    }

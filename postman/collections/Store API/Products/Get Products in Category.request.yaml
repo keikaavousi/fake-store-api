@@ -1,0 +1,12 @@
+$kind: http-request
+name: Get Products in Category
+method: GET
+url: '{{baseUrl}}/products/category/jewelery'
+order: 4000
+queryParams:
+  - key: limit
+    value: '5'
+    disabled: true
+  - key: sort
+    value: desc
+    disabled: true

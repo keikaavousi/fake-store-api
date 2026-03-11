@@ -1,0 +1,18 @@
+$kind: http-request
+name: Update Product
+method: PUT
+url: '{{baseUrl}}/products/7'
+order: 6000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "Updated Product",
+      "price": 19.99,
+      "description": "An updated product",
+      "image": "https://i.pravatar.cc",
+      "category": "electronic"
+    }

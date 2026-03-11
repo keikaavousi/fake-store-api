@@ -1,0 +1,6 @@
+name: Store API Environment
+values:
+  - key: baseUrl
+    value: 'https://fakestoreapi.com'
+    enabled: true
+    type: default

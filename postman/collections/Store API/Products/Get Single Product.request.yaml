@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Single Product
+method: GET
+url: '{{baseUrl}}/products/1'
+order: 2000

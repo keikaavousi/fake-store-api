@@ -1,0 +1,22 @@
+$kind: http-request
+name: Login
+method: POST
+url: "{{baseUrl}}/auth/login"
+scripts:
+  - type: beforeRequest
+    code: |+
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+    language: text/javascript
+order: 1000
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "mor_2314",
+      "password": "83r5^_"
+    }

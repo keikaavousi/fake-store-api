@@ -1,0 +1,18 @@
+$kind: http-request
+name: Add Product
+method: POST
+url: '{{baseUrl}}/products'
+order: 5000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "Test Product",
+      "price": 13.5,
+      "description": "A great product",
+      "image": "https://i.pravatar.cc",
+      "category": "electronic"
+    }

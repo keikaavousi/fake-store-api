@@ -1,0 +1,19 @@
+$kind: http-request
+name: Add Cart
+method: POST
+url: '{{baseUrl}}/carts'
+order: 4000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "userId": 1,
+      "date": "2023-01-01",
+      "products": [
+        { "productId": 1, "quantity": 2 },
+        { "productId": 3, "quantity": 1 }
+      ]
+    }

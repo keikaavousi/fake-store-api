@@ -1,0 +1,5 @@
+$kind: http-request
+name: Delete Cart
+method: DELETE
+url: '{{baseUrl}}/carts/1'
+order: 6000

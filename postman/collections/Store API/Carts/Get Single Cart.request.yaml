@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Single Cart
+method: GET
+url: '{{baseUrl}}/carts/1'
+order: 2000

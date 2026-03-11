@@ -1,0 +1,31 @@
+$kind: http-request
+name: Add User
+method: POST
+url: '{{baseUrl}}/users'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "john@example.com",
+      "username": "johndoe",
+      "password": "secret123",
+      "name": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "address": {
+        "city": "San Antonio",
+        "street": "Main St",
+        "number": 123,
+        "zipcode": "12345",
+        "geolocation": {
+          "lat": "-37.3159",
+          "long": "81.1496"
+        }
+      },
+      "phone": "1-555-123-4567"
+    }

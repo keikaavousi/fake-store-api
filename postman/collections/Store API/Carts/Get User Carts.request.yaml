@@ -1,0 +1,12 @@
+$kind: http-request
+name: Get User Carts
+method: GET
+url: '{{baseUrl}}/carts/user/1'
+order: 3000
+queryParams:
+  - key: startdate
+    value: '2020-10-03'
+    disabled: true
+  - key: enddate
+    value: '2020-12-12'
+    disabled: true

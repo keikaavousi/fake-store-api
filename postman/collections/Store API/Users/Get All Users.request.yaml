@@ -1,0 +1,12 @@
+$kind: http-request
+name: Get All Users
+method: GET
+url: '{{baseUrl}}/users'
+order: 1000
+queryParams:
+  - key: limit
+    value: '5'
+    disabled: true
+  - key: sort
+    value: desc
+    disabled: true

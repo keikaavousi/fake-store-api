@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Single User
+method: GET
+url: '{{baseUrl}}/users/1'
+order: 2000
