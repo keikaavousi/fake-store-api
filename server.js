@@ -1,57 +1,61 @@
-//initializes
-const mongoose = require('mongoose');
-const express = require('express');
-const cors = require('cors');
 const path = require('path');
+const cors = require('cors');
 const dotenv = require('dotenv');
-const dotenvExpand = require('dotenv-expand');
-const myEnv = dotenv.config();
-dotenvExpand.expand(myEnv);
+const express = require('express');
+const mongoose = require('mongoose');
 
-//app
+dotenv.config();
+
+const authRoutes = require('./routes/auth');
+const cartRoutes = require('./routes/cart');
+const productRoutes = require('./routes/product');
+const userRoutes = require('./routes/user');
+
 const app = express();
+const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:3000')
+  .split(',')
+  .map((origin) => origin.trim());
 
-//port
-const port = process.env.PORT || 6400;
+app.disable('x-powered-by');
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Origin is not allowed by CORS'));
+  },
+  credentials: true,
+}));
+app.use(express.json({ limit: '100kb' }));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-//routes
-const productRoute = require('./routes/product');
-const homeRoute = require('./routes/home');
-const cartRoute = require('./routes/cart');
-const userRoute = require('./routes/user');
-const authRoute = require('./routes/auth');
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok' });
+});
+app.use('/auth', authRoutes);
+app.use('/products', productRoutes);
+app.use('/carts', cartRoutes);
+app.use('/users', userRoutes);
 
-//middleware
-app.use(cors());
+app.use((error, _req, res, _next) => {
+  console.error(error.message);
+  res.status(500).json({ message: 'Something went wrong.' });
+});
 
-app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+async function startServer() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL is not configured');
+  }
 
-//view engine
-app.set('view engine', 'ejs');
-app.set('views', 'views');
+  await mongoose.connect(process.env.DATABASE_URL);
+  const port = process.env.PORT || 6400;
+  app.listen(port, () => console.log(`Brad's Store API listening on port ${port}`));
+}
 
-app.disable('view cache');
+if (require.main === module) {
+  startServer().catch((error) => {
+    console.error(`Unable to start server: ${error.message}`);
+    process.exitCode = 1;
+  });
+}
 
-app.use('/', homeRoute);
-app.use('/products', productRoute);
-app.use('/carts', cartRoute);
-app.use('/users', userRoute);
-app.use('/auth', authRoute);
-
-//mongoose
-mongoose.set('useFindAndModify', false);
-mongoose.set('useUnifiedTopology', true);
-mongoose
-	.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-	.then(() => {
-		app.listen(port, () => {
-			console.log('connect');
-		});
-	})
-	.catch((err) => {
-		console.log(err);
-	});
-
-module.exports = app;
+module.exports = { app, startServer };

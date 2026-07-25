@@ -1,122 +1,75 @@
 const User = require('../model/user');
 
-module.exports.getAllUser = (req, res) => {
-	const limit = Number(req.query.limit) || 0;
-	const sort = req.query.sort == 'desc' ? -1 : 1;
-
-	User.find()
-		.select(['-_id'])
-		.limit(limit)
-		.sort({
-			id: sort,
-		})
-		.then((users) => {
-			res.json(users);
-		})
-		.catch((err) => console.log(err));
+exports.getAllUser = async (req, res) => {
+  try {
+    const limit = Math.max(0, Number(req.query.limit) || 0);
+    const sort = req.query.sort === 'desc' ? -1 : 1;
+    return res.json(await User.find().limit(limit).sort({ _id: sort }));
+  } catch (error) {
+    return res.status(500).json({ message: 'Unable to load users.' });
+  }
 };
 
-module.exports.getUser = (req, res) => {
-	const id = req.params.id;
-
-	User.findOne({
-		id,
-	})
-		.select(['-_id'])
-		.then((user) => {
-			res.json(user);
-		})
-		.catch((err) => console.log(err));
+exports.getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: 'User not found.' });
+    return res.json(user);
+  } catch (error) {
+    return res.status(400).json({ message: 'Invalid user ID.' });
+  }
 };
 
-module.exports.addUser = (req, res) => {
-	if (typeof req.body == undefined) {
-		res.json({
-			status: 'error',
-			message: 'data is undefined',
-		});
-	} else {
-		let userCount = 0;
-		User.find()
-			.countDocuments(function (err, count) {
-				userCount = count;
-			})
-			.then(() => {
-				const user = new User({
-					id: userCount + 1,
-					email: req.body.email,
-					username: req.body.username,
-					password: req.body.password,
-					name: {
-						firstname: req.body.firstname,
-						lastname: req.body.lastname,
-					},
-					address: {
-						city: req.body.address.city,
-						street: req.body.address.street,
-						number: req.body.number,
-						zipcode: req.body.zipcode,
-						geolocation: {
-							lat: req.body.address.geolocation.lat,
-							long: req.body.address.geolocation.long,
-						},
-					},
-					phone: req.body.phone,
-				});
-				// user.save()
-				//   .then(user => res.json(user))
-				//   .catch(err => console.log(err))
-
-				res.json(user);
-			});
-
-		//res.json({id:User.find().count()+1,...req.body})
-	}
+exports.addUser = async (req, res) => {
+  try {
+    const user = await User.create({
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password,
+      name: {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+      },
+      address: req.body.address,
+      phone: req.body.phone,
+    });
+    return res.status(201).json(user);
+  } catch (error) {
+    const status = error.code === 11000 ? 409 : 400;
+    return res.status(status).json({ message: error.message });
+  }
 };
 
-module.exports.editUser = (req, res) => {
-	if (typeof req.body == undefined || req.params.id == null) {
-		res.json({
-			status: 'error',
-			message: 'something went wrong! check your sent data',
-		});
-	} else {
-		res.json({
-			id: parseInt(req.params.id),
-			email: req.body.email,
-			username: req.body.username,
-			password: req.body.password,
-			name: {
-				firstname: req.body.firstname,
-				lastname: req.body.lastname,
-			},
-			address: {
-				city: req.body.address.city,
-				street: req.body.address.street,
-				number: req.body.number,
-				zipcode: req.body.zipcode,
-				geolocation: {
-					lat: req.body.address.geolocation.lat,
-					long: req.body.address.geolocation.long,
-				},
-			},
-			phone: req.body.phone,
-		});
-	}
+exports.editUser = async (req, res) => {
+  const safeUpdates = {
+    email: req.body.email,
+    username: req.body.username,
+    name: req.body.name,
+    address: req.body.address,
+    phone: req.body.phone,
+  };
+  Object.keys(safeUpdates).forEach((key) => {
+    if (safeUpdates[key] === undefined) delete safeUpdates[key];
+  });
+
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, safeUpdates, {
+      new: true,
+      runValidators: true,
+    });
+    if (!user) return res.status(404).json({ message: 'User not found.' });
+    return res.json(user);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
 };
 
-module.exports.deleteUser = (req, res) => {
-	if (req.params.id == null) {
-		res.json({
-			status: 'error',
-			message: 'cart id should be provided',
-		});
-	} else {
-		User.findOne({ id: req.params.id })
-			.select(['-_id'])
-			.then((user) => {
-				res.json(user);
-			})
-			.catch((err) => console.log(err));
-	}
+exports.deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) return res.status(404).json({ message: 'User not found.' });
+    return res.status(204).send();
+  } catch (error) {
+    return res.status(400).json({ message: 'Invalid user ID.' });
+  }
 };

@@ -1,118 +1,71 @@
 const Product = require('../model/product');
 
-module.exports.getAllProducts = (req, res) => {
-	const limit = Number(req.query.limit) || 0;
-	const sort = req.query.sort == 'desc' ? -1 : 1;
-
-	Product.find()
-		.select(['-_id'])
-		.limit(limit)
-		.sort({ id: sort })
-		.then((products) => {
-			res.json(products);
-		})
-		.catch((err) => console.log(err));
+exports.getAllProducts = async (_req, res) => {
+  try {
+    res.json(await Product.find().sort({ id: 1 }));
+  } catch (error) {
+    res.status(500).json({ message: 'Unable to load products.' });
+  }
 };
 
-module.exports.getProduct = (req, res) => {
-	const id = req.params.id;
-
-	Product.findOne({
-		id,
-	})
-		.select(['-_id'])
-		.then((product) => {
-			res.json(product);
-		})
-		.catch((err) => console.log(err));
+exports.getProduct = async (req, res) => {
+  try {
+    const product = await Product.findOne({
+      $or: [
+        ...(Number.isNaN(Number(req.params.id)) ? [] : [{ id: Number(req.params.id) }]),
+        ...(req.params.id.match(/^[0-9a-fA-F]{24}$/) ? [{ _id: req.params.id }] : []),
+      ],
+    });
+    if (!product) return res.status(404).json({ message: 'Product not found.' });
+    return res.json(product);
+  } catch (error) {
+    return res.status(500).json({ message: 'Unable to load the product.' });
+  }
 };
 
-module.exports.getProductCategories = (req, res) => {
-	Product.distinct('category')
-		.then((categories) => {
-			res.json(categories);
-		})
-		.catch((err) => console.log(err));
+exports.addProduct = async (req, res) => {
+  try {
+    return res.status(201).json(await Product.create(req.body));
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
 };
 
-module.exports.getProductsInCategory = (req, res) => {
-	const category = req.params.category;
-	const limit = Number(req.query.limit) || 0;
-	const sort = req.query.sort == 'desc' ? -1 : 1;
-
-	Product.find({
-		category,
-	})
-		.select(['-_id'])
-		.limit(limit)
-		.sort({ id: sort })
-		.then((products) => {
-			res.json(products);
-		})
-		.catch((err) => console.log(err));
+exports.getProductCategories = async (_req, res) => {
+  try {
+    return res.json(await Product.distinct('category'));
+  } catch (error) {
+    return res.status(500).json({ message: 'Unable to load categories.' });
+  }
 };
 
-module.exports.addProduct = (req, res) => {
-	if (typeof req.body == undefined) {
-		res.json({
-			status: 'error',
-			message: 'data is undefined',
-		});
-	} else {
-		// let productCount = 0;
-		// Product.find()
-		//   .countDocuments(function (err, count) {
-		//     productCount = count;
-		//   })
-		//   .then(() => {
-		const product = {
-			id: 21,
-			title: req.body.title,
-			price: req.body.price,
-			description: req.body.description,
-			image: req.body.image,
-			category: req.body.category,
-		};
-		// product.save()
-		//   .then(product => res.json(product))
-		//   .catch(err => console.log(err))
-		res.json(product);
-		// });
-	}
+exports.getProductsInCategory = async (req, res) => {
+  try {
+    return res.json(await Product.find({ category: req.params.category }).sort({ id: 1 }));
+  } catch (error) {
+    return res.status(500).json({ message: 'Unable to load this category.' });
+  }
 };
 
-module.exports.editProduct = (req, res) => {
-	if (typeof req.body == undefined || req.params.id == null) {
-		res.json({
-			status: 'error',
-			message: 'something went wrong! check your sent data',
-		});
-	} else {
-		res.json({
-			id: parseInt(req.params.id),
-			title: req.body.title,
-			price: req.body.price,
-			description: req.body.description,
-			image: req.body.image,
-			category: req.body.category,
-		});
-	}
+exports.editProduct = async (req, res) => {
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!product) return res.status(404).json({ message: 'Product not found.' });
+    return res.json(product);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
 };
 
-module.exports.deleteProduct = (req, res) => {
-	if (req.params.id == null) {
-		res.json({
-			status: 'error',
-			message: 'cart id should be provided',
-		});
-	} else {
-		Product.findOne({
-			id: req.params.id,
-		})
-			.select(['-_id'])
-			.then((product) => {
-				res.json(product);
-			})
-			.catch((err) => console.log(err));
-	}
+exports.deleteProduct = async (req, res) => {
+  try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    if (!product) return res.status(404).json({ message: 'Product not found.' });
+    return res.status(204).send();
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
 };

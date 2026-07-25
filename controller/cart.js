@@ -1,110 +1,87 @@
 const Cart = require('../model/cart');
 
-module.exports.getAllCarts = (req, res) => {
-	const limit = Number(req.query.limit) || 0;
-	const sort = req.query.sort == 'desc' ? -1 : 1;
-	const startDate = req.query.startdate || new Date('1970-1-1');
-	const endDate = req.query.enddate || new Date();
-
-	console.log(startDate, endDate);
-
-	Cart.find({
-		date: { $gte: new Date(startDate), $lt: new Date(endDate) },
-	})
-		.select('-_id -products._id')
-		.limit(limit)
-		.sort({ id: sort })
-		.then((carts) => {
-			res.json(carts);
-		})
-		.catch((err) => console.log(err));
+exports.getAllCarts = async (_req, res) => {
+  try {
+    return res.json(await Cart.find());
+  } catch (error) {
+    return res.status(500).json({ message: 'Unable to load carts.' });
+  }
 };
 
-module.exports.getCartsbyUserid = (req, res) => {
-	const userId = req.params.userid;
-	const startDate = req.query.startdate || new Date('1970-1-1');
-	const endDate = req.query.enddate || new Date();
-
-	console.log(startDate, endDate);
-	Cart.find({
-		userId,
-		date: { $gte: new Date(startDate), $lt: new Date(endDate) },
-	})
-		.select('-_id -products._id')
-		.then((carts) => {
-			res.json(carts);
-		})
-		.catch((err) => console.log(err));
+exports.getSingleCart = async (req, res) => {
+  try {
+    const cart = await Cart.findById(req.params.id);
+    if (!cart) return res.status(404).json({ message: 'Cart not found.' });
+    return res.json(cart);
+  } catch (error) {
+    return res.status(400).json({ message: 'Invalid cart ID.' });
+  }
 };
 
-module.exports.getSingleCart = (req, res) => {
-	const id = req.params.id;
-	Cart.findOne({
-		id,
-	})
-		.select('-_id -products._id')
-		.then((cart) => res.json(cart))
-		.catch((err) => console.log(err));
+exports.getCartsbyUserid = async (req, res) => {
+  try {
+    return res.json(await Cart.find({ userId: req.params.userid }));
+  } catch (error) {
+    return res.status(500).json({ message: 'Unable to load this cart.' });
+  }
 };
 
-module.exports.addCart = (req, res) => {
-	if (typeof req.body == undefined) {
-		res.json({
-			status: 'error',
-			message: 'data is undefined',
-		});
-	} else {
-		//     let cartCount = 0;
-		// Cart.find().countDocuments(function (err, count) {
-		//   cartCount = count
-		//   })
+exports.addOrUpdateCart = async (req, res) => {
+  const { userId, products = [], productId, quantity = 1 } = req.body;
+  const incomingProducts = products.length ? products : [{ productId, quantity }];
 
-		//     .then(() => {
-		const cart = {
-			id: 11,
-			userId: req.body.userId,
-			date: req.body.date,
-			products: req.body.products,
-		};
-		// cart.save()
-		//   .then(cart => res.json(cart))
-		//   .catch(err => console.log(err))
+  if (!userId || incomingProducts.some((item) => !item.productId)) {
+    return res.status(400).json({ message: 'A user and at least one product are required.' });
+  }
 
-		res.json(cart);
-		// })
+  try {
+    const cart = await Cart.findOneAndUpdate(
+      { userId },
+      { $setOnInsert: { userId, products: [] } },
+      { new: true, upsert: true },
+    );
 
-		//res.json({...req.body,id:Cart.find().count()+1})
-	}
+    incomingProducts.forEach((incoming) => {
+      const currentItem = cart.products.find(
+        (item) => item.productId === String(incoming.productId),
+      );
+      if (currentItem) {
+        currentItem.quantity = Math.max(1, currentItem.quantity + Number(incoming.quantity || 1));
+      } else {
+        cart.products.push({
+          productId: String(incoming.productId),
+          quantity: Math.max(1, Number(incoming.quantity || 1)),
+        });
+      }
+    });
+
+    await cart.save();
+    return res.json(cart);
+  } catch (error) {
+    return res.status(500).json({ message: 'Unable to update the cart.' });
+  }
 };
 
-module.exports.editCart = (req, res) => {
-	if (typeof req.body == undefined || req.params.id == null) {
-		res.json({
-			status: 'error',
-			message: 'something went wrong! check your sent data',
-		});
-	} else {
-		res.json({
-			id: parseInt(req.params.id),
-			userId: req.body.userId,
-			date: req.body.date,
-			products: req.body.products,
-		});
-	}
+exports.editCart = async (req, res) => {
+  try {
+    const cart = await Cart.findByIdAndUpdate(
+      req.params.id,
+      { products: req.body.products },
+      { new: true, runValidators: true },
+    );
+    if (!cart) return res.status(404).json({ message: 'Cart not found.' });
+    return res.json(cart);
+  } catch (error) {
+    return res.status(400).json({ message: 'Unable to update the cart.' });
+  }
 };
 
-module.exports.deleteCart = (req, res) => {
-	if (req.params.id == null) {
-		res.json({
-			status: 'error',
-			message: 'cart id should be provided',
-		});
-	} else {
-		Cart.findOne({ id: req.params.id })
-			.select('-_id -products._id')
-			.then((cart) => {
-				res.json(cart);
-			})
-			.catch((err) => console.log(err));
-	}
+exports.deleteCart = async (req, res) => {
+  try {
+    const cart = await Cart.findByIdAndDelete(req.params.id);
+    if (!cart) return res.status(404).json({ message: 'Cart not found.' });
+    return res.status(204).send();
+  } catch (error) {
+    return res.status(400).json({ message: 'Unable to delete the cart.' });
+  }
 };

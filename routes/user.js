@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const user = require('../controller/user')
 
+router.post('/signup', user.addUser);
 router.get('/',user.getAllUser)
 router.get('/:id',user.getUser)
 router.post('/',user.addUser)

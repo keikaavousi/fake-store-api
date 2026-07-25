@@ -1,27 +1,25 @@
 {
-  "name": "api",
-  "version": "1.0.0",
-  "description": "FakeStoreAPI is a free online REST API that provides you fake e-commerce JSON data",
+  "name": "brads-store-api",
+  "version": "2.0.0",
+  "description": "The API for Brad's Store",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "test": "vitest run"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "dotenv-expand": "^8.0.1",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.6"
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.2"
   },
   "devDependencies": {
-    "ejs": "^3.1.6",
-    "jest": "^27.0.6",
-    "nodemon": "^2.0.9",
-    "supertest": "^6.1.3"
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.1",
+    "vitest": "^3.2.4"
   }
 }
